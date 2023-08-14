@@ -6,11 +6,9 @@ public class ItemMenu : MonoBehaviour
 {
     public ItemButton[] itemButtons;
     public Item[] allItems;
-    private int curItemButton = 0;
+    private int itemButtonPosition = 0;
     private GameObject curItem;
 
-    private Vector3 mousePos;
-    public float itemMoveSpeed = 0.1f;
 
     private void Update()
     {
@@ -24,19 +22,19 @@ public class ItemMenu : MonoBehaviour
 
     private void ItemFollowCursor()
     {
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        curItem.transform.position = Vector2.Lerp(curItem.transform.position, mousePos, itemMoveSpeed);
+        curItem.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void InstantiateItem()
     {
-
+        //called from button
     }
 
     public void AddItem(Item itemToAdd, int quantityToAdd)
     {
-
+        //first find item against all prefabs
+        //crete new button if no item exists
+        //otherwise itemQuantity++
     }
 
 
