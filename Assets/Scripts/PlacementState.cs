@@ -29,7 +29,6 @@ public class PlacementState : IBuildingState
 
         if (selectedObjectIndex > -1)
         {
-            //gridVisual.SetActive(true);
             previewSystem.StartShowingPlacementPreview(database.furnitureData[selectedObjectIndex].prefab, database.furnitureData[selectedObjectIndex].size);
         }
         else

@@ -21,6 +21,12 @@ public class Item : MonoBehaviour
     {
         if (!canRotate) { return; }
         curDirection++;
+
+        if(curDirection > spriteDirections.Length - 1)
+        {
+            curDirection = 0;
+        }
+
         UpdateSprite();
     }
 

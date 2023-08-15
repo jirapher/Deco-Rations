@@ -37,7 +37,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update()
     {
-        if(buildingState == null) { return; }
+        if(buildingState == null) { print("Building state null"); return;  }
 
         Vector3 mousePos = inputMan.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePos);
@@ -74,6 +74,7 @@ public class PlacementSystem : MonoBehaviour
         Vector3Int gridPosition = grid.WorldToCell(mousePos);
 
         buildingState.OnAction(gridPosition);
+        StopPlacement();
     }
 
     /*private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)

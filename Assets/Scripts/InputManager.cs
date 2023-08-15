@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     private Vector3 lastPosition;
     public LayerMask placementLayer;
 
-    public event Action OnClicked, OnExit;
+    public event Action OnClicked, OnRightClick, OnExit;
 
     private void Start()
     {
@@ -22,6 +22,11 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             OnClicked?.Invoke();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            TryRotateObject();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -45,5 +50,23 @@ public class InputManager : MonoBehaviour
         }
 
         return lastPosition;
+    }
+
+    public void TryRotateObject()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, placementLayer);
+
+        if (hit.collider != null)
+        {
+            if(hit.collider.gameObject.TryGetComponent<Item>(out Item item))
+            {
+                item.Rotate();
+            }
+            else
+            {
+                print("No item script found");
+            }
+            
+        }
     }
 }

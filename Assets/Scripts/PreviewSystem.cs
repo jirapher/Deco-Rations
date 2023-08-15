@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PreviewSystem : MonoBehaviour
 {
@@ -17,10 +18,14 @@ public class PreviewSystem : MonoBehaviour
 
     private SpriteRenderer cellIndicatorRenderer;
 
+    public Image previewItemImage;
+    private Image previewItemImageBlank;
+
     private void Start()
     {
         cellIndicatorRenderer = cellIndicator.GetComponent<SpriteRenderer>();
         cellIndLocalScale = cellIndicator.transform.localScale;
+        previewItemImageBlank = previewItemImage;
         //transparentColor = ogColor;
     }
 
@@ -28,7 +33,7 @@ public class PreviewSystem : MonoBehaviour
     {
         cellIndicator.transform.localScale = cellIndLocalScale;
         previewObject = Instantiate(prefab);
-        //ogColor = previewObject.GetComponent<SpriteRenderer>().color;
+        previewItemImage.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
         SetTransparent(previewObject);
         CellIndicatorSize(size);
         cellIndicator.SetActive(true);
@@ -58,10 +63,15 @@ public class PreviewSystem : MonoBehaviour
     public void StopShowingPreview()
     {
         cellIndicator.SetActive(false);
-
+        ClearPreviewImage();
         if(previewObject == null) { return; }
 
         Destroy(previewObject);
+    }
+
+    public void ClearPreviewImage()
+    {
+        previewItemImage = previewItemImageBlank;
     }
 
     public void UpdatePosition(Vector2 position, bool validity)
