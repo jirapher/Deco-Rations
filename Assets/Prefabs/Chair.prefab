@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteDirections:
-  - {fileID: -1282019650, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
-  - {fileID: -1282019650, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
-  - {fileID: 100482753, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
-  - {fileID: 942666809, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
+  - {fileID: 21300000, guid: fd2d3412aced47a459513a46b154ecf6, type: 3}
+  - {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
+  - {fileID: 21300000, guid: e3b249d8ac6363141b615ea33135134a, type: 3}
+  - {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
   curDirection: 0
   canRotate: 1
 --- !u!61 &1966764580775367922

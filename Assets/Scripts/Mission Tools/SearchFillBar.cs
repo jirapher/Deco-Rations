@@ -19,6 +19,7 @@ public class SearchFillBar : MonoBehaviour
         baseTimeHold = baseTime;
         if(areaNum == -1) { print("LIST AREAS DUFUS"); }
         bar = GetComponent<Slider>();
+        bar.value = 0;
     }
 
     public IEnumerator FillBar()

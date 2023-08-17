@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1569078170163461580}
   - component: {fileID: 4007173265757904192}
   m_Layer: 6
-  m_Name: Ball_Red
+  m_Name: Island Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 107510576, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4acc37e05a6b864a93ba3f56818437b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,8 +102,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 4.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,6 +124,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76957c1c72ae90f48bcfc53612aa8cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteDirections: []
+  spriteDirections:
+  - {fileID: 21300000, guid: fac2106870f8d6c46b49bedb8c658eb5, type: 3}
+  - {fileID: 21300000, guid: c4acc37e05a6b864a93ba3f56818437b, type: 3}
+  - {fileID: 21300000, guid: 0a02eb715e540d141915d21220e8d06a, type: 3}
+  - {fileID: 21300000, guid: c4acc37e05a6b864a93ba3f56818437b, type: 3}
   curDirection: 0
-  canRotate: 0
+  canRotate: 1

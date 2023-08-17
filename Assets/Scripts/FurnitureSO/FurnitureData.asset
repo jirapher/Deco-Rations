@@ -14,14 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furnitureData:
   - name: Chair
-    id: 0
+    description: A four-legged cheek-holder.
+    restoresHP: 1
+    id: 1
+    itemImage: {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
-  - name: Ball_Green
-    id: 1
-    size: {x: 1, y: 1}
-    prefab: {fileID: 6982433468589861700, guid: 5aa8b61c581546e488f74aaae806bd4f, type: 3}
-  - name: Ball_Purple
+    quantity: 0
+    requiredMaterialType: 000000000200000003000000
+    requiredMaterialQuantity: 01000000000000000100000001000000
+  - name: Island Bed
+    description: A full-sized bed with a breathable front-print blanket.
+    restoresHP: 0
     id: 2
+    itemImage: {fileID: 21300000, guid: 0a02eb715e540d141915d21220e8d06a, type: 3}
+    size: {x: 2, y: 2}
+    prefab: {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
+    quantity: 0
+    requiredMaterialType: 000000000200000003000000
+    requiredMaterialQuantity: 01000000000000000200000001000000
+  - name: Ball_Purple
+    description: A painted rock that you've convinced everyone is a purple ball.
+    restoresHP: 0
+    id: 3
+    itemImage: {fileID: 2133733053, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
     size: {x: 2, y: 2}
     prefab: {fileID: 1676137644279503874, guid: ac12bcdd636a87344bde62d5f9171638, type: 3}
+    quantity: 0
+    requiredMaterialType: 03000000
+    requiredMaterialQuantity: 00000000000000000000000001000000
