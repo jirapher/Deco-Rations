@@ -10,15 +10,22 @@ public class PlayerPanelMission : MonoBehaviour
     public int playerNum = 0;
     public string playerName;
 
+    public int gatherAmt = -1;
+
+    private bool selectable = true;
+
     private void OnMouseDown()
     {
-        missionMan.SetSelectedPlayer(playerName, portrait.sprite);
-        //portrait.sprite = null;
+        if (!selectable) { return; }
+        missionMan.SetSelectedPlayer(playerName, portrait.sprite, gatherAmt);
         portrait.enabled = false;
+        selectable = false;
     }
 
     public void ResetPortrait()
     {
         portrait.enabled = true;
+        //Need this after we're sure we're done with this page
+        selectable = true;
     }
 }
