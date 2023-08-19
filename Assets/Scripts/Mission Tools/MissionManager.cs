@@ -29,6 +29,8 @@ public class MissionManager : MonoBehaviour
 
     public PlayerPanelMission[] players;
 
+    public GameObject toCraftingButton;
+
     //0 woods, 1 cave, 2 beach, 3 river
 
     private void Start()
@@ -36,6 +38,7 @@ public class MissionManager : MonoBehaviour
         noticeTxt.text = initialNoticeText;
         selectedPlayerTxt.text = "";
         sendButton.SetActive(false);
+        toCraftingButton.SetActive(false);
     }
 
 
@@ -49,13 +52,12 @@ public class MissionManager : MonoBehaviour
 
     public void DestinationButtonClick(int destinationNum)
     {
-        //have to send a lot of this to a gathering script...
-
         if (destinationOccupied[destinationNum]) { return; }
         destinationPortraits[destinationNum].sprite = selectedPlayerPortrait;
         destinationPortraits[destinationNum].gameObject.SetActive(true);
         destinationOccupied[destinationNum] = true;
         searchProgressBars[destinationNum].inUse = true;
+
         AddHoldResources(destinationNum);
         placedPlayersNum++;
         ReadyToSendCheck();
@@ -90,10 +92,10 @@ public class MissionManager : MonoBehaviour
 
     private void DistributeResources()
     {
-        inventory.wood += woodHold;
-        inventory.rocks += rockHold;
-        inventory.seeds += seedHold;
-        inventory.vines += vineHold;
+        inventory.AdjustRock(rockHold);
+        inventory.AdjustWood(woodHold);
+        inventory.AdjustSeed(seedHold);
+        inventory.AdjustVines(vineHold);
 
         woodHold = 0;
         rockHold = 0;
@@ -126,6 +128,9 @@ public class MissionManager : MonoBehaviour
     public void SendButtonClicked()
     {
         sendButton.SetActive(false);
+
+        noticeTxt.text = "Searching...";
+
         foreach(SearchFillBar bar in searchProgressBars)
         {
             if (bar.inUse)
@@ -147,6 +152,7 @@ public class MissionManager : MonoBehaviour
             ResetPlayers();
             DistributeResources();
             DisplayRetrievalText();
+            toCraftingButton.SetActive(true);
             missionsComplete = 0;
         }
     }

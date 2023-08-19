@@ -17,7 +17,7 @@ public class InventoryButton : MonoBehaviour
     {
         SetName();
         nameText.text = resourceName;
-        AdjustResource(0);
+        //SetResourceAmount(0);
     }
 
     private void SetName()
@@ -42,9 +42,9 @@ public class InventoryButton : MonoBehaviour
         }
     }
 
-    public void AdjustResource(int adjustmentAmount)
+    public void SetResourceAmount(int newAmount)
     {
-        resourceAmount += adjustmentAmount;
+        resourceAmount = newAmount;
         ZeroCheck();
         quantity.text = resourceAmount.ToString();
     }

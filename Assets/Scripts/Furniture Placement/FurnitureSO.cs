@@ -23,4 +23,5 @@ public class FurnitureData
     [SerializeField] public int quantity = 0;
     [SerializeField] public int[] requiredMaterialType;
     [SerializeField] public int[] requiredMaterialQuantity;
+    [SerializeField] public bool isLocked = false;
 }

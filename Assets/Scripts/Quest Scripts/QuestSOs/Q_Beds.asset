@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
+  m_Name: Q_Beds
+  m_EditorClassIdentifier: 
+  questName: Dawn of the Bed(s)
+  questDetails: The earliest known bedding was made with insect-repellent plants.
+    Your party is losing sleep because arthropods keep trying to nest in them. Craft
+    3 beds. -1 HP every day this bedlam continues.
+  questNum: 1
+  requiredItems:
+  - {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
+  requiredAmount: 03000000
+  drainsHP: 1
+  rewardId: 
+  complete: 0

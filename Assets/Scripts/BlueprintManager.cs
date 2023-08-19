@@ -14,12 +14,18 @@ public class BlueprintManager : MonoBehaviour
 
     public GameObject blueprintButton;
     public GameObject buttonParent;
-
     public static BlueprintManager instance;
+
+    public GameObject craftingButton;
+
+    public InventoryManager inventory;
+    public DesignUIManager designMan;
     private void Start()
     {
         instance = this;
         GenerateButtons();
+        craftingButton.SetActive(false);
+        ClearText();
     }
     public void SetSelectedFurniture(int itemID)
     {
@@ -51,32 +57,47 @@ public class BlueprintManager : MonoBehaviour
 
     public void SetRequirementsText()
     {
-        requirements.text = "Requires: <br>";
-
+        if (selectedFurniture.isLocked) { itemDescription.text = "Complete missions to unlock this item."; return; }
+        requirements.text = "Requires:<br>";
+        bool canCraft = true;
         foreach(int mat in selectedFurniture.requiredMaterialType)
         {
-            print("Mat: " + mat);
             switch (mat)
             {
                 case 0:
-                    requirements.text += selectedFurniture.requiredMaterialQuantity[0].ToString() + " vine<br>";
+                    int vines = selectedFurniture.requiredMaterialQuantity[0];
+                    requirements.text += vines.ToString() + " vine<br>";
+                    if(inventory.vines < vines) { canCraft = false; }
                     break;
 
                 case 1:
-                    requirements.text += selectedFurniture.requiredMaterialQuantity[1].ToString() + " seed<br>";
+                    int seed = selectedFurniture.requiredMaterialQuantity[1];
+                    requirements.text += seed.ToString() + " seed<br>";
+                    if (inventory.vines < seed) { canCraft = false; }
                     break;
 
                 case 2:
-                    requirements.text += selectedFurniture.requiredMaterialQuantity[2].ToString() + " wood<br>";
+                    int wood = selectedFurniture.requiredMaterialQuantity[2];
+                    requirements.text += wood.ToString() + " wood<br>";
+                    if (inventory.vines < wood) { canCraft = false; }
                     break;
 
                 case 3:
-                    requirements.text += selectedFurniture.requiredMaterialQuantity[3].ToString() + " rock<br>";
+                    int rock = selectedFurniture.requiredMaterialQuantity[3];
+                    requirements.text += rock.ToString() + " rock<br>";
+                    if (inventory.vines < rock) { canCraft = false; }
                     break;
             }
         }
-
-        
+        //run check on inventory to see if craft button shown or not
+        if (canCraft)
+        {
+            craftingButton.SetActive(true);
+        }
+        else
+        {
+            craftingButton.SetActive(false);
+        }
     }
 
     public void ClearText()
@@ -96,6 +117,37 @@ public class BlueprintManager : MonoBehaviour
             GameObject b = Instantiate(blueprintButton, buttonParent.transform);
             b.GetComponent<BlueprintButton>().SetDetails(d.name, d.id);
         }
+    }
+
+    public void CraftButton()
+    {
+        selectedFurniture.quantity++;
+
+        foreach (int mat in selectedFurniture.requiredMaterialType)
+        {
+            switch (mat)
+            {
+                case 0:
+                    inventory.AdjustVines(-selectedFurniture.requiredMaterialQuantity[0]);
+                    break;
+
+                case 1:
+                    inventory.AdjustSeed(-selectedFurniture.requiredMaterialQuantity[1]);
+                    break;
+
+                case 2:
+                    inventory.AdjustWood(-selectedFurniture.requiredMaterialQuantity[2]);
+                    break;
+
+                case 3:
+                    inventory.AdjustRock(-selectedFurniture.requiredMaterialQuantity[3]);
+                    break;
+            }
+        }
+
+        //do we meet requires to craft again?
+        SetRequirementsText();
+        designMan.AddItemToInventory(selectedFurniture);
     }
 
 }
