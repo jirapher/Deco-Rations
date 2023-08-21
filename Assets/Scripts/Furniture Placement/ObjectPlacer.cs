@@ -6,12 +6,19 @@ using UnityEngine;
 public class ObjectPlacer : MonoBehaviour
 {
     private List<GameObject> placedGameobjects = new();
-
-    public int PlaceObject(GameObject prefab, Vector2 gridPosition)
+    public GameObject furnitureParent;
+    public QuestManager questMan;
+    public FurnitureSO database;
+    public DesignUIManager designMan;
+    public int PlaceObject(GameObject prefab, Vector2 gridPosition, int id)
     {
-        GameObject go = Instantiate(prefab);
+        GameObject go = Instantiate(prefab, furnitureParent.transform);
         go.transform.position = gridPosition;
+        go.GetComponent<Item>().SetID(id);
+
+        SubtractFromDatabase(id);
         placedGameobjects.Add(go);
+        InitQuestCheck();
         return placedGameobjects.Count - 1;
     }
 
@@ -28,9 +35,53 @@ public class ObjectPlacer : MonoBehaviour
             return;
         }
 
+        AddToDatabase(placedGameobjects[gameobjectIndex].GetComponent<Item>().itemID);
         Destroy(placedGameobjects[gameobjectIndex]);
         placedGameobjects[gameobjectIndex] = null;
-        //CleanList();
-        print("remove object at success");
+    }
+
+    public void SubtractFromDatabase(int itemID)
+    {
+        for(int i = 0; i < database.furnitureData.Count; i++)
+        {
+            if (database.furnitureData[i].id == itemID)
+            {
+                int q = database.furnitureData[i].quantity;
+                q--;
+                if (q < 0)
+                {
+                    q = 0;
+                }
+
+                database.furnitureData[i].quantity = q;
+
+                designMan.UpdateItemDisplayQuantity(itemID, q);
+            }
+        }
+
+        
+    }
+
+    public void AddToDatabase(int itemID)
+    {
+        for (int i = 0; i < database.furnitureData.Count; i++)
+        {
+            if (database.furnitureData[i].id == itemID)
+            {
+                int q = database.furnitureData[i].quantity;
+
+                q++;
+
+                database.furnitureData[i].quantity = q;
+
+                designMan.UpdateItemDisplayQuantity(itemID, q);
+            }
+        }
+
+    }
+
+    public void InitQuestCheck()
+    {
+        questMan.QuestCheck();
     }
 }

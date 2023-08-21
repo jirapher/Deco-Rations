@@ -25,7 +25,10 @@ public class PlayerPanelMission : MonoBehaviour
     public void ResetPortrait()
     {
         portrait.enabled = true;
-        //Need this after we're sure we're done with this page
-        selectable = true;
+    }
+
+    public void SetSelectable(bool isSelectable)
+    {
+        selectable = isSelectable;
     }
 }

@@ -26,10 +26,22 @@ public class BlueprintManager : MonoBehaviour
         GenerateButtons();
         craftingButton.SetActive(false);
         ClearText();
+        ItemUIVisible(false);
+    }
+
+    public void ItemUIVisible(bool isVisible)
+    {
+        itemName.gameObject.SetActive(isVisible);
+        itemDescription.gameObject.SetActive(isVisible);
+        bonusDetails.gameObject.SetActive(isVisible);
+        itemSize.gameObject.SetActive(isVisible);
+        requirements.gameObject.SetActive(isVisible);
+        itemImage.gameObject.SetActive(isVisible);
     }
     public void SetSelectedFurniture(int itemID)
     {
         ClearText();
+        ItemUIVisible(true);
 
         for(int i = 0; i < database.furnitureData.Count; i++)
         {
@@ -60,6 +72,7 @@ public class BlueprintManager : MonoBehaviour
         if (selectedFurniture.isLocked) { itemDescription.text = "Complete missions to unlock this item."; return; }
         requirements.text = "Requires:<br>";
         bool canCraft = true;
+
         foreach(int mat in selectedFurniture.requiredMaterialType)
         {
             switch (mat)
@@ -73,19 +86,19 @@ public class BlueprintManager : MonoBehaviour
                 case 1:
                     int seed = selectedFurniture.requiredMaterialQuantity[1];
                     requirements.text += seed.ToString() + " seed<br>";
-                    if (inventory.vines < seed) { canCraft = false; }
+                    if (inventory.seeds < seed) { canCraft = false; }
                     break;
 
                 case 2:
                     int wood = selectedFurniture.requiredMaterialQuantity[2];
                     requirements.text += wood.ToString() + " wood<br>";
-                    if (inventory.vines < wood) { canCraft = false; }
+                    if (inventory.wood < wood) { canCraft = false; }
                     break;
 
                 case 3:
                     int rock = selectedFurniture.requiredMaterialQuantity[3];
-                    requirements.text += rock.ToString() + " rock<br>";
-                    if (inventory.vines < rock) { canCraft = false; }
+                    requirements.text += rock.ToString() + " stone<br>";
+                    if (inventory.rocks < rock) { canCraft = false; }
                     break;
             }
         }
@@ -122,6 +135,7 @@ public class BlueprintManager : MonoBehaviour
     public void CraftButton()
     {
         selectedFurniture.quantity++;
+        selectedFurniture.totalInCirculation++;
 
         foreach (int mat in selectedFurniture.requiredMaterialType)
         {

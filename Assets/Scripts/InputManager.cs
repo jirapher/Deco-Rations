@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
     private Camera cam;
     private Vector3 lastPosition;
-    public LayerMask placementLayer;
+    public LayerMask furnitureLayer;
+    public LayerMask groundLayer;
 
-    public event Action OnClicked, OnRightClick, OnExit;
+    public event Action OnClicked, OnExit;
 
     private void Start()
     {
@@ -42,7 +41,7 @@ public class InputManager : MonoBehaviour
     
     public Vector3 GetSelectedMapPosition()
     {
-        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, placementLayer);
+        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, groundLayer);
 
         if(hit.collider != null)
         {
@@ -54,7 +53,7 @@ public class InputManager : MonoBehaviour
 
     public void TryRotateObject()
     {
-        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, placementLayer);
+        RaycastHit2D hit = Physics2D.Raycast(cam.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, furnitureLayer);
 
         if (hit.collider != null)
         {

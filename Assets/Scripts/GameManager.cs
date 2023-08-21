@@ -12,9 +12,14 @@ public class GameManager : MonoBehaviour
     private int curDay = 0;
     public Slider HP;
 
+    [Header("Managers")]
     public QuestManager questMan;
     public DesignUIManager designMan;
     public MissionManager gatherMan;
+    public BlueprintManager craftMan;
+
+    [Header("Crafting-Specific")]
+    public GameObject[] specialFunctionObjects;
     //need crafting?
 
     private bool firstDay = true;
@@ -25,7 +30,48 @@ public class GameManager : MonoBehaviour
         SetDayDisplay();
         HP.value = 10;
         AllTabsOff();
+        ToggleSpecialFunctionObjects(false);
         OpenQuest();
+    }
+
+    public void ToggleSpecialFunctionObjects(bool on)
+    {
+        foreach (GameObject g in specialFunctionObjects)
+        {
+            g.SetActive(on);
+        }
+    }
+
+    public void NewDay()
+    {
+        ToggleSpecialFunctionObjects(false);
+
+        curDay++;
+
+        if(curDay > 3)
+        {
+            //questMan.DailyQuestAdd();
+        }
+
+        SetDayDisplay();
+        HPCheck();
+        gatherMan.NewDayUnlock();
+        OpenQuest();
+    }
+
+    private void HPCheck()
+    {
+        HP.value -= questMan.DailyHPDrainCheck();
+        HP.value += questMan.DailyHPRestoreCheck();
+        if(HP.value > HP.maxValue)
+        {
+            HP.value = HP.maxValue;
+        }
+
+        if(HP.value < HP.minValue)
+        {
+            print("You died.");
+        }
     }
 
     public void SetDayDisplay()
@@ -58,14 +104,19 @@ public class GameManager : MonoBehaviour
     public void OpenCraft()
     {
         AllTabsOff();
+        ToggleSpecialFunctionObjects(false);
         designUI.SetActive(true);
         craftTab.SetActive(true);
+        craftMan.ItemUIVisible(false);
     }
 
     public void OpenDesign()
     {
         AllTabsOff();
+
         designTab.SetActive(true);
+
+        ToggleSpecialFunctionObjects(true);
     }
 
 

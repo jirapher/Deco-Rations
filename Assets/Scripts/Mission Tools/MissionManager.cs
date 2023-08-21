@@ -23,7 +23,7 @@ public class MissionManager : MonoBehaviour
     public SearchFillBar[] searchProgressBars;
 
     private int missionsComplete = 0;
-
+    private bool lockedUntilNewDay = false;
     public InventoryManager inventory;
     private int rockHold, woodHold, vineHold, seedHold;
 
@@ -35,15 +35,25 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
+        ClearTextValues();
+    }
+
+    public void ClearTextValues()
+    {
         noticeTxt.text = initialNoticeText;
         selectedPlayerTxt.text = "";
         sendButton.SetActive(false);
         toCraftingButton.SetActive(false);
+        selectedPlayerName = "";
+        selectedPlayerProficiency = -1;
+        selectedPlayerPortrait = null;
+        foundItemsText = "";
     }
-
 
     public void SetSelectedPlayer(string playerName, Sprite portrait, int proficiency)
     {
+        if (lockedUntilNewDay || selectedPlayerName != "") { return; }
+
         selectedPlayerProficiency = proficiency;
         selectedPlayerTxt.text = "Where are you sending " + playerName + "?";
         selectedPlayerPortrait = portrait;
@@ -52,7 +62,9 @@ public class MissionManager : MonoBehaviour
 
     public void DestinationButtonClick(int destinationNum)
     {
-        if (destinationOccupied[destinationNum]) { return; }
+        if (lockedUntilNewDay || destinationOccupied[destinationNum] || AllPlayersPlaced()) { return; }
+
+
         destinationPortraits[destinationNum].sprite = selectedPlayerPortrait;
         destinationPortraits[destinationNum].gameObject.SetActive(true);
         destinationOccupied[destinationNum] = true;
@@ -61,6 +73,11 @@ public class MissionManager : MonoBehaviour
         AddHoldResources(destinationNum);
         placedPlayersNum++;
         ReadyToSendCheck();
+
+        selectedPlayerName = "";
+        selectedPlayerPortrait = null;
+        selectedPlayerProficiency = -1;
+        selectedPlayerTxt.text = "";
     }
 
     private void AddHoldResources(int destination)
@@ -154,7 +171,18 @@ public class MissionManager : MonoBehaviour
             DisplayRetrievalText();
             toCraftingButton.SetActive(true);
             missionsComplete = 0;
+            lockedUntilNewDay = true;
         }
+    }
+
+    public void NewDayUnlock()
+    {
+        ClearTextValues();
+        foreach (PlayerPanelMission p in players)
+        {
+            p.SetSelectable(true);
+        }
+        lockedUntilNewDay = false;
     }
 
     public void ResetPlayers()

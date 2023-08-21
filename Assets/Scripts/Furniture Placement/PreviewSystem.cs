@@ -76,6 +76,7 @@ public class PreviewSystem : MonoBehaviour
 
     public void UpdatePosition(Vector2 position, bool validity)
     {
+
         if(previewObject != null)
         {
             MovePreview(position);

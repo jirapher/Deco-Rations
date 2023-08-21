@@ -9,7 +9,7 @@ public class SearchFillBar : MonoBehaviour
     public MissionManager manager;
 
     public int areaNum = -1;
-    public float baseTime = 3;
+    public float baseTime = 2;
     private float baseTimeHold;
     public bool inUse = false;
     //0:woods, 1:cave, 2:beach, 3:river
@@ -25,15 +25,15 @@ public class SearchFillBar : MonoBehaviour
     public IEnumerator FillBar()
     {
 
-        float dice = Random.Range(0.9f, 1.2f);
+        float dice = Random.Range(0.9f, 1.1f);
 
         baseTime *= dice;
 
 
         while (bar.value < bar.maxValue)
         {
-            yield return new WaitForSeconds(dice);
-            bar.value++;
+            yield return new WaitForSeconds(0.5f);
+            bar.value += dice;
         }
 
         manager.MissionCompleteCheck();

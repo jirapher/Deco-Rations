@@ -7,8 +7,10 @@ public class DesignUIManager : MonoBehaviour
     public GameObject designButtonPrefab;
     public GameObject buttonParent;
     public FurnitureSO database;
-
+    public PlacementSystem placementSys;
     public List<GameObject> allButtons = new();
+
+    public GameObject newDayButton;
 
     private void Start()
     {
@@ -20,6 +22,7 @@ public class DesignUIManager : MonoBehaviour
         foreach(FurnitureData d in database.furnitureData)
         {
             d.quantity = 0;
+            d.totalInCirculation = 0;
         }
     }
     public void AddItemToInventory(FurnitureData item)
@@ -38,8 +41,30 @@ public class DesignUIManager : MonoBehaviour
         }
 
         GameObject b = Instantiate(designButtonPrefab, buttonParent.transform);
-        b.GetComponent<DesignButtons>().SetDetails(item.itemImage, item.quantity, id);
+        b.GetComponent<DesignButtons>().SetDetails(item.itemImage, item.quantity, id, placementSys);
         allButtons.Add(b);
+    }
+
+    public void UpdateItemDisplayQuantity(int itemID, int quantity)
+    {
+        for (int i = 0; i < allButtons.Count; i++)
+        {
+            if (allButtons[i].GetComponent<DesignButtons>().GetItemID() == itemID)
+            {
+                allButtons[i].GetComponent<DesignButtons>().AdjustQuantity(quantity);
+                return;
+            }
+        }
+    }
+
+    public void SetDayButtonActive()
+    {
+        newDayButton.SetActive(true);
+    }
+
+    public void SetDayButtonInactive()
+    {
+        newDayButton.SetActive(false);
     }
 
 

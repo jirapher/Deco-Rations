@@ -19,7 +19,7 @@ public class PlacementSystem : MonoBehaviour
     public ObjectPlacer placer;
     //private SpriteRenderer previewRenderer;
 
-    //private List<GameObject> placedGameobjects = new();
+    //public List<GameObject> placedGameobjects = new();
 
     public PreviewSystem preview;
 
@@ -37,7 +37,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update()
     {
-        if(buildingState == null) { print("Building state null"); return;  }
+        if(buildingState == null) { return; }
 
         Vector3 mousePos = inputMan.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePos);
@@ -85,9 +85,10 @@ public class PlacementSystem : MonoBehaviour
         return selectedData.CanPlaceObjectAt(new Vector2Int(gridPosition.x, gridPosition.y), database.furnitureData[selectedObjectIndex].size);
     }*/
 
-    private void StopPlacement()
+    public void StopPlacement()
     {
         if(buildingState == null) { return; }
+
         gridVisual.SetActive(false);
         buildingState.EndState();
         inputMan.OnClicked -= PlaceStructure;

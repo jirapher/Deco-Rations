@@ -21,50 +21,67 @@ MonoBehaviour:
     size: {x: 1, y: 1}
     prefab: {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
     quantity: 0
+    totalInCirculation: 2
     requiredMaterialType: 000000000200000003000000
     requiredMaterialQuantity: 01000000000000000100000001000000
-    isLocked: 1
+    isLocked: 0
+  - name: Table
+    description: It's a table
+    restoresHP: 0
+    id: 2
+    itemImage: {fileID: 21300000, guid: ced481aea574c7447a2afc7d76f68439, type: 3}
+    size: {x: 2, y: 2}
+    prefab: {fileID: 6982433468589861700, guid: 5aa8b61c581546e488f74aaae806bd4f, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 000000000200000003000000
+    requiredMaterialQuantity: 01000000000000000300000001000000
+    isLocked: 0
   - name: Island Bed
     description: A full-sized bed with a breathable front-print blanket.
     restoresHP: 0
-    id: 2
+    id: 3
     itemImage: {fileID: 21300000, guid: 0a02eb715e540d141915d21220e8d06a, type: 3}
     size: {x: 2, y: 2}
     prefab: {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
     quantity: 0
+    totalInCirculation: 0
     requiredMaterialType: 000000000200000003000000
     requiredMaterialQuantity: 01000000000000000200000001000000
     isLocked: 0
   - name: Ball_Purple
     description: A painted rock that you've convinced everyone is a purple ball.
     restoresHP: 0
-    id: 3
+    id: 0
     itemImage: {fileID: 2133733053, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
     size: {x: 2, y: 2}
     prefab: {fileID: 1676137644279503874, guid: ac12bcdd636a87344bde62d5f9171638, type: 3}
-    quantity: 1
+    quantity: 0
+    totalInCirculation: 0
     requiredMaterialType: 03000000
     requiredMaterialQuantity: 00000000000000000000000001000000
-    isLocked: 0
-  - name: Table
-    description: It's a table
-    restoresHP: 0
-    id: 4
-    itemImage: {fileID: 21300000, guid: ced481aea574c7447a2afc7d76f68439, type: 3}
-    size: {x: 2, y: 2}
-    prefab: {fileID: 6982433468589861700, guid: 5aa8b61c581546e488f74aaae806bd4f, type: 3}
-    quantity: 0
-    requiredMaterialType: 000000000200000003000000
-    requiredMaterialQuantity: 01000000000000000300000001000000
     isLocked: 0
   - name: Lamp
     description: A light for night.
     restoresHP: 0
-    id: 5
-    itemImage: {fileID: 2133733053, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
+    id: 6
+    itemImage: {fileID: 21300000, guid: beb40d7f2e857ad48a9c81096c97870b, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 1676137644279503874, guid: 7b834ba267826aa47ba60c7940395fb9, type: 3}
-    quantity: 1
+    quantity: 0
+    totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000010000000100000001000000
     isLocked: 0
+  - name: Mini-fridge
+    description: Nobody likes warm coconut water!
+    restoresHP: 1
+    id: 9
+    itemImage: {fileID: 21300000, guid: d3f0ffc1c239bae4a91218a7b7114d69, type: 3}
+    size: {x: 1, y: 1}
+    prefab: {fileID: 8704196969142270451, guid: d745860a4e220c549a55d49906abe84a, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 01000000010000000100000001000000
+    isLocked: 1

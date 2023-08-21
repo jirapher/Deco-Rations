@@ -8,7 +8,8 @@ public class Item : MonoBehaviour
     public Sprite[] spriteDirections;
     public int curDirection = 0;
     public bool canRotate;
-    //Directions 0:up, 1:right* (doesn't exist - flip SR), 2:down, 3:left
+    public int itemID = -1;
+    //Directions 0:up, 1:right, 2:down, 3:left
     //all start up?
 
     private void Start()
@@ -30,14 +31,15 @@ public class Item : MonoBehaviour
         UpdateSprite();
     }
 
+    public void SetID(int id)
+    {
+        if(id != itemID) { print("SOMETHING IS WRONG HERE!"); }
+
+        itemID = id;
+    }
+
     private void UpdateSprite()
     {
-        if(curDirection == 1)
-        {
-            sr.flipX = true;
-            return;
-        }
-        sr.flipX = false;
         sr.sprite = spriteDirections[curDirection];
     }
 }

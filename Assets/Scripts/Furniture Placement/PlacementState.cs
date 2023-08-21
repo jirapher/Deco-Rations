@@ -51,7 +51,7 @@ public class PlacementState : IBuildingState
             return;
         }
 
-        int index = placer.PlaceObject(database.furnitureData[selectedObjectIndex].prefab, grid.CellToWorld(gridPosition));
+        int index = placer.PlaceObject(database.furnitureData[selectedObjectIndex].prefab, grid.CellToWorld(gridPosition), database.furnitureData[selectedObjectIndex].id);
 
         //Opposite these lines for removal!
         GridData selectedData = database.furnitureData[selectedObjectIndex].id == 0 ? floorData : furnitureData;

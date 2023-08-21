@@ -8,13 +8,13 @@ public class DesignButtons : MonoBehaviour
 {
     public TMP_Text quantityTxt;
     public Image itemPicture;
-    private int quantity;
-    private int itemID;
-    private PlacementSystem placementSystem;
+    public int quantity;
+    public int itemID;
+    public PlacementSystem placementSystem;
 
     private void Start()
     {
-        placementSystem = FindObjectOfType<PlacementSystem>();
+        //placementSystem = FindObjectOfType<PlacementSystem>();
     }
     public void AdjustQuantity(int newQuantity)
     {
@@ -22,11 +22,12 @@ public class DesignButtons : MonoBehaviour
         UpdateText();
     }
 
-    public void SetDetails(Sprite itemPic, int quantityNum, int id)
+    public void SetDetails(Sprite itemPic, int quantityNum, int id, PlacementSystem ps)
     {
         itemPicture.sprite = itemPic;
         itemID = id;
         quantity = quantityNum;
+        placementSystem = ps;
         UpdateText();
     }
 
@@ -37,11 +38,13 @@ public class DesignButtons : MonoBehaviour
 
     public void OnClick()
     {
+        if(quantity <= 0) { return; }
         placementSystem.StartPlacement(itemID);
     }
 
     public int GetItemID()
     {
+        if(itemID < 0) { print("This is fucked up"); }
         return itemID;
     }
 }

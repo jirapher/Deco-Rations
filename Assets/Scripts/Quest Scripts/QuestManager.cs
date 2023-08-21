@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
 {
     public FurnitureSO database;
     public List<QuestSO> allQuests = new();
+    public List<QuestSO> activeQuests = new();
+    public List<QuestSO> completedQuests = new();
     private int curQuestNum = 0;
 
     [Header("Objectives")]
@@ -23,13 +25,22 @@ public class QuestManager : MonoBehaviour
 
     [Header("Quests")]
     public GameObject questButtonPrefab;
-    public GameObject questButtionParent;
+    public GameObject questButtonParent;
     private List<GameObject> allQuestButtons = new();
 
 
     private void Start()
     {
         GameStartQuestAdd();
+        QuestReset();
+    }
+
+    private void QuestReset()
+    {
+        for(int i = 0; i < allQuests.Count; i++)
+        {
+            allQuests[i].complete = false;
+        }
     }
 
     public void DisplayQuestDetails(int questNum)
@@ -127,13 +138,14 @@ public class QuestManager : MonoBehaviour
         }
 
 
-        GameObject q = Instantiate(questButtonPrefab, questButtionParent.transform);
+        GameObject q = Instantiate(questButtonPrefab, questButtonParent.transform);
         q.GetComponent<QuestButton>().SetData(quest.questName, quest.questNum, quest.drainsHP);
         allQuestButtons.Add(q);
+        activeQuests.Add(quest);
         curQuestNum++;
     }
 
-    public void DailyHPDrainCheck()
+    public int DailyHPDrainCheck()
     {
         int drain = 0;
 
@@ -145,15 +157,28 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        print("HP DRAIN HERE");
-        //GAME MAN UPDATE HP
+        return drain;
+    }
+
+    public int DailyHPRestoreCheck()
+    {
+        int restore = 0;
+
+        for(int i = 0; i < database.furnitureData.Count; i++)
+        {
+            if (database.furnitureData[i].restoresHP)
+            {
+                restore += database.furnitureData[i].quantity;
+            }
+        }
+
+        return restore;
     }
 
     public void DailyQuestAdd()
     {
         if (allQuests[curQuestNum].complete)
         {
-            print("Issue here...");
             curQuestNum++;
         }
         AddNewQuest(allQuests[curQuestNum]);
@@ -163,16 +188,30 @@ public class QuestManager : MonoBehaviour
     {
         quest.complete = true;
 
-        UnlockReward(quest);
+        if(quest.rewardId.Length > 0)
+        {
+            UnlockReward(quest);
+        }
+        
 
-        for(int i = 0; i < allQuestButtons.Count; i++)
+        RemoveQuest(quest);
+    }
+
+    public void RemoveQuest(QuestSO quest)
+    {
+        for (int i = 0; i < allQuestButtons.Count; i++)
         {
             if (allQuestButtons[i].GetComponent<QuestButton>().GetNum() == quest.questNum)
             {
-                Destroy(allQuestButtons[i]);
+                GameObject g = allQuestButtons[i];
                 allQuestButtons.Remove(allQuestButtons[i]);
+                Destroy(g);
             }
         }
+
+
+        activeQuests.Remove(quest);
+        completedQuests.Add(quest);
     }
 
     public void UnlockReward(QuestSO quest)
@@ -186,6 +225,40 @@ public class QuestManager : MonoBehaviour
                 {
                     database.furnitureData[i].isLocked = false;
                 }
+            }
+        }
+    }
+
+    public void QuestCheck()
+    {
+
+        foreach(QuestSO q in activeQuests)
+        {
+            int place = 0;
+            int checksToPass = q.requiredItems.Length;
+            int totalChecks = 0;
+            foreach(GameObject reqItem in q.requiredItems)
+            {
+                int reqAmt = q.requiredAmount[place];
+
+                for(int i = 0; i < database.furnitureData.Count; i++)
+                {
+                    if (reqItem.GetComponent<Item>().itemID == database.furnitureData[i].id)
+                    {
+                        int numPlacedObjects = database.furnitureData[i].totalInCirculation - database.furnitureData[i].quantity;
+                        if(numPlacedObjects >= reqAmt)
+                        {
+                            totalChecks++;
+                        }
+                    }
+                }
+
+                place++;
+            }
+
+            if(totalChecks >= checksToPass)
+            {
+                QuestComplete(q);
             }
         }
     }
