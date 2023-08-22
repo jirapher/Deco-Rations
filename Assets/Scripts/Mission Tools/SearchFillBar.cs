@@ -12,10 +12,12 @@ public class SearchFillBar : MonoBehaviour
     public float baseTime = 2;
     private float baseTimeHold;
     public bool inUse = false;
+    private Slider slider;
     //0:woods, 1:cave, 2:beach, 3:river
 
     private void Start()
     {
+        slider = GetComponent<Slider>();
         baseTimeHold = baseTime;
         if(areaNum == -1) { print("LIST AREAS DUFUS"); }
         bar = GetComponent<Slider>();
@@ -24,7 +26,7 @@ public class SearchFillBar : MonoBehaviour
 
     public IEnumerator FillBar()
     {
-
+        slider.enabled = true;
         float dice = Random.Range(0.9f, 1.1f);
 
         baseTime *= dice;

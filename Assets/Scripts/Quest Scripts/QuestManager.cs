@@ -27,8 +27,6 @@ public class QuestManager : MonoBehaviour
     public GameObject questButtonPrefab;
     public GameObject questButtonParent;
     private List<GameObject> allQuestButtons = new();
-
-
     private void Start()
     {
         GameStartQuestAdd();
@@ -192,7 +190,6 @@ public class QuestManager : MonoBehaviour
         {
             UnlockReward(quest);
         }
-        
 
         RemoveQuest(quest);
     }
@@ -216,7 +213,7 @@ public class QuestManager : MonoBehaviour
 
     public void UnlockReward(QuestSO quest)
     {
-
+        string rewards = "";
         foreach(int reward in quest.rewardId)
         {
             for(int i = 0; i < database.furnitureData.Count; i++)
@@ -224,9 +221,20 @@ public class QuestManager : MonoBehaviour
                 if(reward == database.furnitureData[i].id)
                 {
                     database.furnitureData[i].isLocked = false;
+                    rewards += database.furnitureData[i].name + " <br>";
                 }
             }
         }
+
+        if(rewards != "")
+        {
+            GameManager.instance.SetGameNotice("You completed the " + quest.name + " quest and unlocked: <br>" + rewards, "Quest Complete!");
+        }
+        else
+        {
+            GameManager.instance.SetGameNotice("You completed the " + quest.name + " quest!", "Quest Complete!");
+        }
+        
     }
 
     public void QuestCheck()

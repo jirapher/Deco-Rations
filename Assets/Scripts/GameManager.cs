@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject designTab, gatherTab, craftTab, questTab, designUI;
-
+    public static GameManager instance;
     public TMP_Text dayText;
     private int curDay = 0;
     public Slider HP;
@@ -23,15 +23,27 @@ public class GameManager : MonoBehaviour
     //need crafting?
 
     private bool firstDay = true;
+
+    [Header("NoticeSys")]
+    public GameObject NoticePanel;
+    public TMP_Text noticeTxt;
+    public TMP_Text noticeHeaderTxt;
     //quest > gather > craft > build
     private void Start()
     {
+        instance = this;
         curDay = 1;
         SetDayDisplay();
         HP.value = 10;
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         OpenQuest();
+        IntroNotice();
+    }
+
+    private void IntroNotice()
+    {
+        SetGameNotice("Click on a button in the Quest Tracker to show details. When you're done, use the green button in the corner to start gathering resources!", "The Quest Screen");
     }
 
     public void ToggleSpecialFunctionObjects(bool on)
@@ -40,6 +52,22 @@ public class GameManager : MonoBehaviour
         {
             g.SetActive(on);
         }
+    }
+
+    public void SetGameNotice(string notice, string header)
+    {
+        noticeHeaderTxt.text = header;
+        noticeTxt.text = notice;
+        NoticePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void CloseNotice()
+    {
+        Time.timeScale = 1;
+        noticeHeaderTxt.text = "";
+        noticeTxt.text = "";
+        NoticePanel.SetActive(false);
     }
 
     public void NewDay()
