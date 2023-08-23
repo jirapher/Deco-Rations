@@ -21,11 +21,14 @@ public class PreviewSystem : MonoBehaviour
     public Image previewItemImage;
     private Image previewItemImageBlank;
 
+    public QuestManager questMan;
+
     private void Start()
     {
         cellIndicatorRenderer = cellIndicator.GetComponent<SpriteRenderer>();
         cellIndLocalScale = cellIndicator.transform.localScale;
         previewItemImageBlank = previewItemImage;
+        previewItemImage.gameObject.SetActive(false);
         //transparentColor = ogColor;
     }
 
@@ -33,7 +36,9 @@ public class PreviewSystem : MonoBehaviour
     {
         cellIndicator.transform.localScale = cellIndLocalScale;
         previewObject = Instantiate(prefab);
+        previewItemImage.gameObject.SetActive(true);
         previewItemImage.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
+        previewItemImage.preserveAspect = true;
         SetTransparent(previewObject);
         CellIndicatorSize(size);
         cellIndicator.SetActive(true);
@@ -67,11 +72,14 @@ public class PreviewSystem : MonoBehaviour
         if(previewObject == null) { return; }
 
         Destroy(previewObject);
+
+        questMan.QuestCheck();
     }
 
     public void ClearPreviewImage()
     {
         previewItemImage = previewItemImageBlank;
+        previewItemImage.gameObject.SetActive(false);
     }
 
     public void UpdatePosition(Vector2 position, bool validity)

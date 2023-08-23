@@ -228,11 +228,11 @@ public class QuestManager : MonoBehaviour
 
         if(rewards != "")
         {
-            GameManager.instance.SetGameNotice("You completed the " + quest.name + " quest and unlocked: <br>" + rewards, "Quest Complete!");
+            GameManager.instance.SetGameNotice("You completed the " + quest.questName + " quest and unlocked: <br>" + rewards, "Quest Complete!");
         }
         else
         {
-            GameManager.instance.SetGameNotice("You completed the " + quest.name + " quest!", "Quest Complete!");
+            GameManager.instance.SetGameNotice("You completed the " + quest.questName + " quest!", "Quest Complete!");
         }
         
     }

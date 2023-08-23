@@ -65,7 +65,7 @@ public class PlacementState : IBuildingState
     {
         //Not sure about this -- P4 @ 13:30
         GridData selectedData = database.furnitureData[selectedObjectIndex].id == 0 ? floorData : furnitureData;
-
+        if (database.furnitureData[selectedObjectIndex].quantity <= 0) { return false; }
         return selectedData.CanPlaceObjectAt(new Vector2Int(gridPosition.x, gridPosition.y), database.furnitureData[selectedObjectIndex].size);
     }
 

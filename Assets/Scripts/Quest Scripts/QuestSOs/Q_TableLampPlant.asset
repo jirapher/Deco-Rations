@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
   m_Name: Q_TableLampPlant
   m_EditorClassIdentifier: 
-  questName: The Table Guy
-  questDetails: Jeff can't stop talking about football. He's slamming Lucas into
-    stuff and doing touchdown dances. Please build him a companion-plant. While you're
-    at it, Lucas wants a lamp and Paula wants a table. Jeff's hyper-masculinity is
-    causing -1 HP for every day this mission is incomplete.
+  questName: The Appeaser
+  questDetails: Dirk needs a companion plant to talk football with. And if he's getting
+    a plant then Malachi wants a lamp and Kezia wants a table. Dirk yelling sports
+    stats at everyone causes -1 HP for every day this mission is incomplete.
   questNum: 2
   requiredItems:
   - {fileID: 1676137644279503874, guid: 7b834ba267826aa47ba60c7940395fb9, type: 3}

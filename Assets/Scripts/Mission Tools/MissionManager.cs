@@ -36,6 +36,7 @@ public class MissionManager : MonoBehaviour
     private void Start()
     {
         ClearTextValues();
+        ProgressBarsActive(false);
     }
 
     public void ClearTextValues()
@@ -148,6 +149,8 @@ public class MissionManager : MonoBehaviour
 
         noticeTxt.text = "Searching...";
 
+        ProgressBarsActive(true);
+
         foreach(SearchFillBar bar in searchProgressBars)
         {
             if (bar.inUse)
@@ -158,6 +161,13 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    private void ProgressBarsActive(bool isActive)
+    {
+        foreach (SearchFillBar bar in searchProgressBars)
+        {
+            bar.gameObject.SetActive(isActive);
+        }
+    }
     public void MissionCompleteCheck()
     {
         missionsComplete++;
@@ -165,6 +175,7 @@ public class MissionManager : MonoBehaviour
         if(missionsComplete >= 3)
         {
             //we're done!
+            ProgressBarsActive(false);
             RetrievalReset();
             ResetPlayers();
             DistributeResources();

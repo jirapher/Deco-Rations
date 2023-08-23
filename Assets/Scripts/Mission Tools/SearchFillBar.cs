@@ -5,19 +5,18 @@ using UnityEngine.UI;
 
 public class SearchFillBar : MonoBehaviour
 {
-    private Slider bar;
+    public Slider bar;
     public MissionManager manager;
 
     public int areaNum = -1;
     public float baseTime = 2;
     private float baseTimeHold;
     public bool inUse = false;
-    private Slider slider;
     //0:woods, 1:cave, 2:beach, 3:river
 
     private void Start()
     {
-        slider = GetComponent<Slider>();
+        bar = GetComponent<Slider>();
         baseTimeHold = baseTime;
         if(areaNum == -1) { print("LIST AREAS DUFUS"); }
         bar = GetComponent<Slider>();
@@ -26,7 +25,6 @@ public class SearchFillBar : MonoBehaviour
 
     public IEnumerator FillBar()
     {
-        slider.enabled = true;
         float dice = Random.Range(0.9f, 1.1f);
 
         baseTime *= dice;
@@ -34,7 +32,7 @@ public class SearchFillBar : MonoBehaviour
 
         while (bar.value < bar.maxValue)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             bar.value += dice;
         }
 

@@ -21,7 +21,7 @@ MonoBehaviour:
     size: {x: 1, y: 1}
     prefab: {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
     quantity: 0
-    totalInCirculation: 2
+    totalInCirculation: 0
     requiredMaterialType: 000000000200000003000000
     requiredMaterialQuantity: 01000000000000000100000001000000
     isLocked: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000010000000100000001000000
-    isLocked: 0
+    isLocked: 1
   - name: Mini-fridge
     description: Nobody likes warm coconut water!
     restoresHP: 1
@@ -80,6 +80,19 @@ MonoBehaviour:
     itemImage: {fileID: 21300000, guid: d3f0ffc1c239bae4a91218a7b7114d69, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 8704196969142270451, guid: d745860a4e220c549a55d49906abe84a, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 01000000010000000100000001000000
+    isLocked: 1
+  - name: Plant
+    description: A great way to put the thing you're trying to escape back in your
+      house.
+    restoresHP: 1
+    id: 5
+    itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
+    size: {x: 1, y: 1}
+    prefab: {fileID: 1676137644279503874, guid: 5053338732959e947a07824e24f44808, type: 3}
     quantity: 0
     totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000

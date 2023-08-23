@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Q_Beds
   m_EditorClassIdentifier: 
   questName: Dawn of the Bed(s)
-  questDetails: The earliest known bedding was made with insect-repellent plants.
-    Your party is losing sleep because arthropods keep trying to nest in them. Craft
-    3 beds. -1 HP every day this bedlam continues.
+  questDetails: Your party is losing sleep because arthropods keep trying to nest
+    in their orifices. Craft 3 beds. -1 HP every day this bedlam continues.
   questNum: 1
   requiredItems:
   - {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
   requiredAmount: 03000000
   drainsHP: 1
-  rewardId: 
+  rewardId: 06000000
   complete: 0

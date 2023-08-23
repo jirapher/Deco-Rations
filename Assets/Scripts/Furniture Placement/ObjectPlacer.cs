@@ -7,19 +7,32 @@ public class ObjectPlacer : MonoBehaviour
 {
     private List<GameObject> placedGameobjects = new();
     public GameObject furnitureParent;
-    public QuestManager questMan;
     public FurnitureSO database;
     public DesignUIManager designMan;
     public int PlaceObject(GameObject prefab, Vector2 gridPosition, int id)
     {
         GameObject go = Instantiate(prefab, furnitureParent.transform);
         go.transform.position = gridPosition;
-        go.GetComponent<Item>().SetID(id);
-
+        //go.GetComponent<Item>().SetID(id);
         SubtractFromDatabase(id);
         placedGameobjects.Add(go);
-        InitQuestCheck();
         return placedGameobjects.Count - 1;
+    }
+
+    private bool CanPlace(int id)
+    {
+        for(int i = 0; i < database.furnitureData.Count; i++)
+        {
+            if (database.furnitureData[i].id == id)
+            {
+                if (database.furnitureData[i].quantity > 0)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public void CleanList()
@@ -78,10 +91,5 @@ public class ObjectPlacer : MonoBehaviour
             }
         }
 
-    }
-
-    public void InitQuestCheck()
-    {
-        questMan.QuestCheck();
     }
 }
