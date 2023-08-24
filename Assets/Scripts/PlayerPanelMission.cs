@@ -16,7 +16,7 @@ public class PlayerPanelMission : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!selectable) { return; }
+        if (!selectable || missionMan.someoneIsSelected) { return; }
         missionMan.SetSelectedPlayer(playerName, portrait.sprite, gatherAmt);
         portrait.enabled = false;
         selectable = false;

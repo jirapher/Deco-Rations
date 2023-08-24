@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DesignUIManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class DesignUIManager : MonoBehaviour
     public List<GameObject> allButtons = new();
 
     public GameObject newDayButton;
+
+    public Color lockedColor;
+    private Color normalColor;
 
     private void Start()
     {

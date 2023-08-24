@@ -36,6 +36,7 @@ public class PreviewSystem : MonoBehaviour
     {
         cellIndicator.transform.localScale = cellIndLocalScale;
         previewObject = Instantiate(prefab);
+        previewObject.GetComponent<Item>().enabled = false;
         previewItemImage.gameObject.SetActive(true);
         previewItemImage.sprite = prefab.GetComponent<SpriteRenderer>().sprite;
         previewItemImage.preserveAspect = true;

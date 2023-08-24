@@ -179,6 +179,9 @@ public class QuestManager : MonoBehaviour
         {
             curQuestNum++;
         }
+
+        if(curQuestNum > allQuests.Count - 1) { return; }
+
         AddNewQuest(allQuests[curQuestNum]);
     }
 

@@ -1449,6 +1449,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139916821}
   m_CullTransparentMesh: 1
+--- !u!1 &164617539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164617540}
+  - component: {fileID: 164617541}
+  m_Layer: 0
+  m_Name: TD System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164617540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164617539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6511402, y: -2.3027072, z: 2.8544695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164617541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164617539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ddeead2383c6a40b8a4bd8b436551b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camSettings: {fileID: 519420033}
+  sunSettings: {fileID: 1696336860}
+  enemies: []
+  spawnPoints: []
+  database: {fileID: 0}
 --- !u!1 &180925494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,6 +3374,7 @@ MonoBehaviour:
   normalSize: 10
   designSize: 10
   nightSize: 15
+  transitionSpeed: 3
 --- !u!1 &523876420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,8 +4621,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedPlayerTxt: {fileID: 2005700745}
   selectedPlayerPortrait: {fileID: 0}
+  someoneIsSelected: 0
   noticeTxt: {fileID: 1436792601}
   sendButton: {fileID: 1138659235}
+  searchingText:
+  - Searching...
+  - Scrounging...
+  - Pilfering...
+  - Questing...
+  - Hunting...
+  - Gathering...
+  - Collecting...
+  - Scouting...
   initialNoticeText: Send everyone to a location by clicking their icon then selecting
     a destination.
   destinationPortraits:
@@ -4991,7 +5051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit Design Mode
+  m_text: I'm done designing
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5018,7 +5078,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.45
+  m_fontSize: 0.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5551,7 +5611,6 @@ GameObject:
   - component: {fileID: 851413219}
   - component: {fileID: 851413221}
   - component: {fileID: 851413220}
-  - component: {fileID: 851413222}
   m_Layer: 5
   m_Name: QuestUI
   m_TagString: Untagged
@@ -5598,7 +5657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5622,22 +5681,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851413218}
   m_CullTransparentMesh: 1
---- !u!114 &851413222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851413218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94598b16e793bb438e28f6133e3416b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  midnight: {r: 1, g: 1, b: 1, a: 1}
-  midday: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
-  fadeTime: 4
-  uiImage: {fileID: 851413220}
 --- !u!1 &851978897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6581,7 +6624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &915498373
 Transform:
   m_ObjectHideFlags: 0
@@ -7476,7 +7519,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.941625}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000024795532, y: NaN}
   m_SizeDelta: {x: 0, y: -2.4169}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9307,6 +9350,7 @@ MonoBehaviour:
   placementSys: {fileID: 2092129328}
   allButtons: []
   newDayButton: {fileID: 812244815}
+  lockedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1262470972
 GameObject:
   m_ObjectHideFlags: 0
@@ -10071,7 +10115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1378893889
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12083,14 +12127,22 @@ MonoBehaviour:
   designMan: {fileID: 1258823151}
   gatherMan: {fileID: 699999931}
   craftMan: {fileID: 722795965}
+  tdMan: {fileID: 164617541}
   specialFunctionObjects:
   - {fileID: 915498372}
   - {fileID: 254750772}
   - {fileID: 1195206932}
   - {fileID: 1524711193}
+  buildingSpecific:
+  - {fileID: 1741347666}
+  - {fileID: 842313158}
+  - {fileID: 1781301701}
+  - {fileID: 1749374873}
+  - {fileID: 2092129326}
   NoticePanel: {fileID: 34341000}
   noticeTxt: {fileID: 515223044}
   noticeHeaderTxt: {fileID: 19112136}
+  dayHPHolder: {fileID: 0}
 --- !u!4 &1665961316
 Transform:
   m_ObjectHideFlags: 0
@@ -12195,6 +12247,7 @@ GameObject:
   - component: {fileID: 1696336859}
   - component: {fileID: 1696336858}
   - component: {fileID: 1696336857}
+  - component: {fileID: 1696336860}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
@@ -12295,6 +12348,20 @@ Transform:
   m_Father: {fileID: 1549100969}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696336860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696336856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94598b16e793bb438e28f6133e3416b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightCol: {r: 0.32156864, g: 0.24313726, b: 0.44313726, a: 1}
+  fadeTime: 5
 --- !u!1 &1701378793
 GameObject:
   m_ObjectHideFlags: 0
@@ -13428,6 +13495,7 @@ MonoBehaviour:
   allQuests:
   - {fileID: 11400000, guid: cb3199182d692db469fca3d52d245b18, type: 2}
   - {fileID: 11400000, guid: 67a06dbb7927a5042ba3177ffec29de4, type: 2}
+  - {fileID: 11400000, guid: a21c67a1c628ad343908529e063c8224, type: 2}
   - {fileID: 11400000, guid: c2b5db61aab26c84b8f336184be5a084, type: 2}
   activeQuests: []
   completedQuests: []
@@ -16086,7 +16154,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1665961315}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewDay
+        m_MethodName: EnterNight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

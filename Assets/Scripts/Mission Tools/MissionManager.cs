@@ -11,9 +11,12 @@ public class MissionManager : MonoBehaviour
     private string selectedPlayerName;
     private int selectedPlayerProficiency = -1;
     public Sprite selectedPlayerPortrait;
+    public bool someoneIsSelected = false;
 
     public TMP_Text noticeTxt;
     public GameObject sendButton;
+
+    public string[] searchingText;
 
     public string initialNoticeText;
     private string foundItemsText;
@@ -49,12 +52,14 @@ public class MissionManager : MonoBehaviour
         selectedPlayerProficiency = -1;
         selectedPlayerPortrait = null;
         foundItemsText = "";
+        someoneIsSelected = false;
     }
 
     public void SetSelectedPlayer(string playerName, Sprite portrait, int proficiency)
     {
-        if (lockedUntilNewDay || selectedPlayerName != "") { return; }
+        if (lockedUntilNewDay || someoneIsSelected) { return; }
 
+        someoneIsSelected = true;
         selectedPlayerProficiency = proficiency;
         selectedPlayerTxt.text = "Where are you sending " + playerName + "?";
         selectedPlayerPortrait = portrait;
@@ -64,7 +69,6 @@ public class MissionManager : MonoBehaviour
     public void DestinationButtonClick(int destinationNum)
     {
         if (lockedUntilNewDay || destinationOccupied[destinationNum] || AllPlayersPlaced()) { return; }
-
 
         destinationPortraits[destinationNum].sprite = selectedPlayerPortrait;
         destinationPortraits[destinationNum].gameObject.SetActive(true);
@@ -79,6 +83,7 @@ public class MissionManager : MonoBehaviour
         selectedPlayerPortrait = null;
         selectedPlayerProficiency = -1;
         selectedPlayerTxt.text = "";
+        someoneIsSelected = false;
     }
 
     private void AddHoldResources(int destination)
@@ -86,22 +91,22 @@ public class MissionManager : MonoBehaviour
         switch (destination)
         {
             case 0:
-                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " vines.");
+                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " vines from the woods.");
                 vineHold += selectedPlayerProficiency;
                 break;
 
                 case 1:
-                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " seeds.");
+                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " seeds from the cave.");
                 seedHold += selectedPlayerProficiency;
                 break;
 
             case 2:
-                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " wood.");
+                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " wood from the beach.");
                 woodHold += selectedPlayerProficiency;
                 break;
 
             case 3:
-                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " rocks.");
+                SetFoundItemsText(selectedPlayerName + " retrieved " + selectedPlayerProficiency + " stones from the river.");
                 rockHold += selectedPlayerProficiency;
                 break;
 
@@ -147,7 +152,8 @@ public class MissionManager : MonoBehaviour
     {
         sendButton.SetActive(false);
 
-        noticeTxt.text = "Searching...";
+        //noticeTxt.text = "Searching...";
+        noticeTxt.text = searchingText[Random.Range(0, searchingText.Length)];
 
         ProgressBarsActive(true);
 

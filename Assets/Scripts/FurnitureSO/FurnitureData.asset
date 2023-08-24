@@ -15,7 +15,7 @@ MonoBehaviour:
   furnitureData:
   - name: Chair
     description: A four-legged cheek-holder.
-    restoresHP: 1
+    restoresHP: 0
     id: 1
     itemImage: {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
     size: {x: 1, y: 1}
@@ -48,18 +48,6 @@ MonoBehaviour:
     totalInCirculation: 0
     requiredMaterialType: 000000000200000003000000
     requiredMaterialQuantity: 01000000000000000200000001000000
-    isLocked: 0
-  - name: Ball_Purple
-    description: A painted rock that you've convinced everyone is a purple ball.
-    restoresHP: 0
-    id: 0
-    itemImage: {fileID: 2133733053, guid: ab8488fc8ddc8bf4184a67bda21c3f8c, type: 3}
-    size: {x: 2, y: 2}
-    prefab: {fileID: 1676137644279503874, guid: ac12bcdd636a87344bde62d5f9171638, type: 3}
-    quantity: 0
-    totalInCirculation: 0
-    requiredMaterialType: 03000000
-    requiredMaterialQuantity: 00000000000000000000000001000000
     isLocked: 0
   - name: Lamp
     description: A light for night.
@@ -97,4 +85,30 @@ MonoBehaviour:
     totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000010000000100000001000000
+    isLocked: 1
+  - name: Bookshelf
+    description: It's a shelf for books - mainly Malachi's poetry and Kezia's song
+      lyrics.
+    restoresHP: 0
+    id: 10
+    itemImage: {fileID: 21300000, guid: e02729ba837018f4eba23ef71b811957, type: 3}
+    size: {x: 2, y: 2}
+    prefab: {fileID: 2188273352124425841, guid: 45b326d390c353c4abb8576fed2ad6db, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 010000000200000003000000
+    requiredMaterialQuantity: 020000000600000003000000
+    isLocked: 1
+  - name: Divider
+    description: A proper way to give party members the option to hide their dangly
+      bits.
+    restoresHP: 1
+    id: 11
+    itemImage: {fileID: 21300000, guid: 6f2c9cf558b175a439ccca8d01965beb, type: 3}
+    size: {x: 2, y: 2}
+    prefab: {fileID: 6870802623920587983, guid: 05531623c3037844290df4fb4c4e61b0, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 010000000200000003000000
+    requiredMaterialQuantity: 010000000400000004000000
     isLocked: 1

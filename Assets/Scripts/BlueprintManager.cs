@@ -69,7 +69,12 @@ public class BlueprintManager : MonoBehaviour
 
     public void SetRequirementsText()
     {
-        if (selectedFurniture.isLocked) { itemDescription.text = "Complete missions to unlock this item."; return; }
+        if (selectedFurniture.isLocked)
+        {
+            itemDescription.text = "Complete missions to unlock this item.";
+            craftingButton.SetActive(false);
+            return;
+        }
         requirements.text = "Requires:<br>";
         bool canCraft = true;
 

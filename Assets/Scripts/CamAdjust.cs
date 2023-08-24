@@ -7,23 +7,25 @@ public class CamAdjust : MonoBehaviour
 
     private Camera cam;
     public float normalSize, designSize, nightSize;
+    public float transitionSpeed = 3f;
     private void Start()
     {
         cam = Camera.main;
     }
 
-    public void SetDesignPerspective()
+    public IEnumerator SetPerspective(bool normal, bool design, bool night)
     {
-        cam.orthographicSize = designSize;
-    }
+        float size = 0;
+        if (normal) { size = normalSize; }
+        if(design) { size = designSize; }
+        if(night) { size = nightSize; }
 
-    public void SetNormalSize()
-    {
-        cam.orthographicSize = normalSize;
-    }
+        while(cam.orthographicSize != size)
+        {
+            cam.orthographicSize = Mathf.MoveTowards(cam.orthographicSize, size, Time.deltaTime * transitionSpeed);
+            yield return null;
+        }
 
-    public void SetNightSize()
-    {
-        cam.orthographicSize = nightSize;
+        cam.orthographicSize = size;
     }
 }

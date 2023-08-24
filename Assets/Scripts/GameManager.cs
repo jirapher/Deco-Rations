@@ -17,9 +17,11 @@ public class GameManager : MonoBehaviour
     public DesignUIManager designMan;
     public MissionManager gatherMan;
     public BlueprintManager craftMan;
+    public TDManager tdMan;
 
     [Header("Crafting-Specific")]
     public GameObject[] specialFunctionObjects;
+    public GameObject[] buildingSpecific;
     //need crafting?
 
     private bool firstDay = true;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject NoticePanel;
     public TMP_Text noticeTxt;
     public TMP_Text noticeHeaderTxt;
+    public GameObject dayHPHolder;
     //quest > gather > craft > build
     private void Start()
     {
@@ -72,34 +75,67 @@ public class GameManager : MonoBehaviour
 
     public void NewDay()
     {
+        //idea is this cuts to night island, displays stats, then goes back to quests.
+        //will need to transition cam after TD
         ToggleSpecialFunctionObjects(false);
-
+        dayHPHolder.SetActive(true);
         curDay++;
 
         if(curDay > 3)
         {
-            //questMan.DailyQuestAdd();
+            questMan.DailyQuestAdd();
         }
-
+        string header = "Day " + curDay + ".";
         SetDayDisplay();
-        HPCheck();
+        string notice = HPCheck();
         gatherMan.NewDayUnlock();
         OpenQuest();
+        SetGameNotice(notice, header);
     }
 
-    private void HPCheck()
+    public void EnterNight()
     {
-        HP.value -= questMan.DailyHPDrainCheck();
-        HP.value += questMan.DailyHPRestoreCheck();
+        ToggleSpecialFunctionObjects(false);
+        dayHPHolder.SetActive(false);
+        specialFunctionObjects[0].SetActive(true);
+        tdMan.Sunset();
+        foreach(GameObject g in buildingSpecific)
+        {
+            g.SetActive(false);
+        }
+    }
+
+    private string HPCheck()
+    {
+        string notice = "";
+        int subtract = questMan.DailyHPDrainCheck();
+        HP.value -= subtract;
+
+        int add = questMan.DailyHPRestoreCheck();
+        HP.value += add;
+
         if(HP.value > HP.maxValue)
         {
             HP.value = HP.maxValue;
+            return "The party is happy. You're at max HP!";
         }
 
         if(HP.value < HP.minValue)
         {
             print("You died.");
         }
+
+        if(subtract > 0)
+        {
+            notice += "You lost " + subtract + " HP.";
+        }
+
+        if(add > 0)
+        {
+            notice += "You gained " + add + " HP.";
+        }
+
+        return notice;
     }
 
     public void SetDayDisplay()

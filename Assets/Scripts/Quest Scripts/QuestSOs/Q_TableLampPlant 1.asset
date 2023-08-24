@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
-  m_Name: Q_TableLampPlant
+  m_Name: Q_TableLampPlant 1
   m_EditorClassIdentifier: 
   questName: The Appeaser
   questDetails: Dirk needs a companion plant to talk football with. And if he's getting
@@ -23,5 +23,5 @@ MonoBehaviour:
   - {fileID: 1676137644279503874, guid: 5053338732959e947a07824e24f44808, type: 3}
   requiredAmount: 010000000100000001000000
   drainsHP: 1
-  rewardId: 
+  rewardId: 0a000000
   complete: 0

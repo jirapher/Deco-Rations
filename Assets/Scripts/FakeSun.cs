@@ -5,36 +5,30 @@ using UnityEngine.UI;
 
 public class FakeSun : MonoBehaviour
 {
-    public Color midnight, midday;
-    public float fadeTime = 4f;
-    public Image uiImage;
+    private SpriteRenderer sr;
+    public Color nightCol;
+    public float fadeTime;
 
     private void Start()
     {
-        uiImage.color = midnight;
-        StartCoroutine(LightTransition(true));
+        sr = GetComponent<SpriteRenderer>();
+        StartCoroutine(ChangeColor(false));
     }
 
-    public IEnumerator LightTransition(bool fadeToLight)
+    public IEnumerator ChangeColor(bool toDay)
     {
+        float t = 0;
+        Color start = sr.color;
+        Color destination = Color.white;
+        if (!toDay) { destination = nightCol; }
 
-        if (fadeToLight)
+        while(t < fadeTime)
         {
-            for(float t = 0.0f; t < 1f; t += Time.deltaTime / fadeTime)
-            {
-                Color newCol = Color.Lerp(uiImage.color, midnight, t);
-                uiImage.color = newCol;
-                yield return null;
-            }
+            t += Time.deltaTime;
+            sr.color = Color.Lerp(start, destination, t / fadeTime);
+            yield return null;
         }
-        else
-        {
-            for (float t = 0.0f; t < 1f; t += Time.deltaTime / fadeTime)
-            {
-                Color newCol = Color.Lerp(uiImage.color, midday, Mathf.PingPong(Time.time, fadeTime));
-            }
-        }
-
-        yield break;
     }
+
+
 }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
-  m_Name: Q_Beds
+  m_Name: Q_Bookshelves
   m_EditorClassIdentifier: 
-  questName: Dawn of the Bed(s)
-  questDetails: Your party is losing sleep because arthropods keep trying to nest
-    in their orifices. Craft 3 beds. -1 HP every day this bedlam continues.
-  questNum: 1
+  questName: Bookworms
+  questDetails: Kezia needs a bookshelf to store her new EP of lyrics about island
+    survival. Malachi also wants one to log island data.
+  questNum: 2
   requiredItems:
-  - {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
-  requiredAmount: 04000000
-  drainsHP: 1
-  rewardId: 06000000
+  - {fileID: 2188273352124425841, guid: 45b326d390c353c4abb8576fed2ad6db, type: 3}
+  requiredAmount: 02000000
+  drainsHP: 0
+  rewardId: 0b000000
   complete: 0
