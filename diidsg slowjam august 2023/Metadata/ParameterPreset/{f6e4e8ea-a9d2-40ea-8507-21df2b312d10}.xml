@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{f6e4e8ea-a9d2-40ea-8507-21df2b312d10}">
+		<property name="name">
+			<value>night layer 1 on off</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3687e533-cd84-45e0-9e91-b5b825748b94}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0cb2a4b4-1cd3-4b6e-b9c0-8141a281d966}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0cb2a4b4-1cd3-4b6e-b9c0-8141a281d966}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+		<property name="seekSpeed">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

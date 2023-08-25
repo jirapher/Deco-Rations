@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{3b1c3e70-96ed-4dc2-ad57-e8e1121f5bf4}">
+		<property name="assetPath">
+			<value>Bells Agogo Hi.aif</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3146666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{342d7785-552f-4999-9a9d-35eead1923e2}</destination>
+		</relationship>
+	</object>
+</objects>

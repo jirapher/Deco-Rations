@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{08f927cb-303a-4eac-a6aa-efc418fcd537}">
+		<property name="name">
+			<value>day pause</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3687e533-cd84-45e0-9e91-b5b825748b94}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a7e6c2bd-2ed6-492a-be7c-abdf597afba5}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a7e6c2bd-2ed6-492a-be7c-abdf597afba5}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+		<property name="seekSpeed">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

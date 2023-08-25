@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{039ccc7e-4f0e-4298-b0e9-e487b2ab6558}">
+		<property name="assetPath">
+			<value>439472__inspectorj__rooster-calling-close-a.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.3016770833333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{342d7785-552f-4999-9a9d-35eead1923e2}</destination>
+		</relationship>
+	</object>
+</objects>
