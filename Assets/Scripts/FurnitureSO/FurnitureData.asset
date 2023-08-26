@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: FurnitureData
   m_EditorClassIdentifier: 
   furnitureData:
+  - name: Free Flooring!
+    description: Have some dignity! People get callused feet walking on sand all
+      day.
+    restoresHP: 0
+    id: 0
+    itemImage: {fileID: 21300000, guid: deb2d377aa3d2f34fa23a1d747e7bd1a, type: 3}
+    size: {x: 1, y: 1}
+    prefab: {fileID: 6982433468589861700, guid: 35f0cb1160e3dc8438c1ca8104271746, type: 3}
+    quantity: 0
+    totalInCirculation: 2
+    requiredMaterialType: 
+    requiredMaterialQuantity: 
+    isLocked: 0
   - name: Chair
     description: A four-legged cheek-holder.
     restoresHP: 0
@@ -112,3 +125,15 @@ MonoBehaviour:
     requiredMaterialType: 010000000200000003000000
     requiredMaterialQuantity: 010000000400000004000000
     isLocked: 1
+  - name: Plant Tower
+    description: PLANT TOWERRRRRRRRRRRR
+    restoresHP: 0
+    id: 14
+    itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
+    size: {x: 1, y: 1}
+    prefab: {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
+    quantity: 0
+    totalInCirculation: 3
+    requiredMaterialType: 
+    requiredMaterialQuantity: 
+    isLocked: 0

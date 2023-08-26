@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
-    private List<GameObject> placedGameobjects = new();
+    public List<GameObject> placedFurniture = new();
     public GameObject furnitureParent;
     public FurnitureSO database;
     public DesignUIManager designMan;
@@ -15,8 +15,8 @@ public class ObjectPlacer : MonoBehaviour
         go.transform.position = gridPosition;
         //go.GetComponent<Item>().SetID(id);
         SubtractFromDatabase(id);
-        placedGameobjects.Add(go);
-        return placedGameobjects.Count - 1;
+        placedFurniture.Add(go);
+        return placedFurniture.Count - 1;
     }
 
     private bool CanPlace(int id)
@@ -37,20 +37,20 @@ public class ObjectPlacer : MonoBehaviour
 
     public void CleanList()
     {
-        placedGameobjects.RemoveAll(s => s == null);
+        placedFurniture.RemoveAll(s => s == null);
     }
 
     internal void RemoveObjectAt(int gameobjectIndex)
     {
-        if(placedGameobjects.Count <= gameobjectIndex || placedGameobjects[gameobjectIndex] == null)
+        if(placedFurniture.Count <= gameobjectIndex || placedFurniture[gameobjectIndex] == null)
         {
             print("snag in remove object at");
             return;
         }
 
-        AddToDatabase(placedGameobjects[gameobjectIndex].GetComponent<Item>().itemID);
-        Destroy(placedGameobjects[gameobjectIndex]);
-        placedGameobjects[gameobjectIndex] = null;
+        AddToDatabase(placedFurniture[gameobjectIndex].GetComponent<Item>().itemID);
+        Destroy(placedFurniture[gameobjectIndex]);
+        placedFurniture[gameobjectIndex] = null;
     }
 
     public void SubtractFromDatabase(int itemID)
@@ -73,6 +73,11 @@ public class ObjectPlacer : MonoBehaviour
         }
 
         
+    }
+
+    public List<GameObject> GetAllPlacedFurniture()
+    {
+        return placedFurniture;
     }
 
     public void AddToDatabase(int itemID)

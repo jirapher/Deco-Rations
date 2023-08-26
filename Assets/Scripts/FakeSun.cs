@@ -12,7 +12,7 @@ public class FakeSun : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        StartCoroutine(ChangeColor(false));
+        //StartCoroutine(ChangeColor(false));
     }
 
     public IEnumerator ChangeColor(bool toDay)
@@ -28,6 +28,11 @@ public class FakeSun : MonoBehaviour
             sr.color = Color.Lerp(start, destination, t / fadeTime);
             yield return null;
         }
+    }
+
+    public void BackToNormal()
+    {
+        sr.color = Color.white;
     }
 
 

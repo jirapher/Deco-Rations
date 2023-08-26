@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject designTab, gatherTab, craftTab, questTab, designUI;
     public static GameManager instance;
     public TMP_Text dayText;
-    private int curDay = 0;
+    public int curDay = 0;
     public Slider HP;
 
     [Header("Managers")]
@@ -19,9 +19,11 @@ public class GameManager : MonoBehaviour
     public BlueprintManager craftMan;
     public TDManager tdMan;
 
-    [Header("Crafting-Specific")]
+    [Header("Specific Things")]
     public GameObject[] specialFunctionObjects;
     public GameObject[] buildingSpecific;
+    public GameObject tdTimer;
+    public GameObject nightStatsScreen;
     //need crafting?
 
     private bool firstDay = true;
@@ -77,10 +79,11 @@ public class GameManager : MonoBehaviour
     {
         //idea is this cuts to night island, displays stats, then goes back to quests.
         //will need to transition cam after TD
+        tdTimer.SetActive(false);
         ToggleSpecialFunctionObjects(false);
         dayHPHolder.SetActive(true);
         curDay++;
-
+        nightStatsScreen.SetActive(true);
         if(curDay > 3)
         {
             questMan.DailyQuestAdd();
@@ -89,14 +92,17 @@ public class GameManager : MonoBehaviour
         SetDayDisplay();
         string notice = HPCheck();
         gatherMan.NewDayUnlock();
-        OpenQuest();
+        //OpenQuest();
         SetGameNotice(notice, header);
+        tdMan.gameObject.SetActive(false);
     }
 
     public void EnterNight()
     {
+        AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         dayHPHolder.SetActive(false);
+        tdTimer.SetActive(true);
         specialFunctionObjects[0].SetActive(true);
         tdMan.Sunset();
         foreach(GameObject g in buildingSpecific)
@@ -108,31 +114,28 @@ public class GameManager : MonoBehaviour
     private string HPCheck()
     {
         string notice = "";
+
         int subtract = questMan.DailyHPDrainCheck();
         HP.value -= subtract;
+        notice += "You lost " + subtract + " HP from incomplete quests.<br>";
+
+        int tdMinus = tdMan.HPCalc();
+        HP.value -= tdMinus;
+        notice += "You lost " + tdMinus + " HP from invaders.<br>";
 
         int add = questMan.DailyHPRestoreCheck();
         HP.value += add;
+        notice += "You restored " + subtract + " HP from your interior design skills.<br> <br>";
 
-        if(HP.value > HP.maxValue)
+        if (HP.value > HP.maxValue)
         {
             HP.value = HP.maxValue;
-            return "The party is happy. You're at max HP!";
+            notice += "The party is happy. You're at max HP!";
         }
 
-        if(HP.value < HP.minValue)
+        if(HP.value <= 0)
         {
-            print("You died.");
-        }
-
-        if(subtract > 0)
-        {
-            notice += "You lost " + subtract + " HP.";
-        }
-
-        if(add > 0)
-        {
-            notice += "You gained " + add + " HP.";
+            notice += "Everyone died...";
         }
 
         return notice;
@@ -150,6 +153,8 @@ public class GameManager : MonoBehaviour
         gatherTab.SetActive(false);
         craftTab.SetActive(false);
         questTab.SetActive(false);
+        tdTimer.SetActive(false);
+        nightStatsScreen.SetActive(false);
     }
 
     public void OpenQuest()
@@ -179,7 +184,7 @@ public class GameManager : MonoBehaviour
         AllTabsOff();
 
         designTab.SetActive(true);
-
+        tdMan.gameObject.SetActive(true);
         ToggleSpecialFunctionObjects(true);
     }
 
