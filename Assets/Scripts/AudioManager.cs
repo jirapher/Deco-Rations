@@ -1,0 +1,71 @@
+using UnityEngine;
+using System.Collections;
+
+public class AudioManager : MonoBehaviour
+{
+    public static AudioManager instance;
+    private FMOD.Studio.EventInstance bkg;
+    private FMOD.Studio.EventInstance sfx;
+
+    public FMODUnity.EventReference dayTheme, nightTheme;
+    public FMODUnity.EventReference[] allsfx;
+
+    private void Start()
+    {
+        instance = this;
+        IntroMusic();
+    }
+
+    public void IntroMusic()
+    {
+        bkg = FMODUnity.RuntimeManager.CreateInstance(dayTheme);
+        bkg.start();
+        Invoke("EnterDayTheme", 8f);
+    }
+
+    public void EnterDayTheme()
+    {
+        bkg.setParameterByName("day intro transition", 1);
+    }
+
+    public IEnumerator DayToNightTransition()
+    {
+        bkg.setParameterByName("day intro transition", 0);
+        bkg.setParameterByName("day stop and start", 0);
+
+        yield return new WaitForSeconds(1f);
+
+        bkg = FMODUnity.RuntimeManager.CreateInstance(nightTheme);
+        bkg.start();
+        bkg.setParameterByName("night stop start", 1);
+
+        StartLoopedSFX(9);
+    }
+
+    public void NightToDayTransition()
+    {
+        StopLoopedSFX();
+        PlaySFX(2);
+        bkg.setParameterByName("night stop start", 0);
+        IntroMusic();
+    }
+
+    //craft : 1, gather : 4 both loops
+    public void StartLoopedSFX(int sound)
+    {
+        sfx = FMODUnity.RuntimeManager.CreateInstance(allsfx[sound]);
+        sfx.start();
+    }
+
+    public void StopLoopedSFX()
+    {
+        sfx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void PlaySFX(int num)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(allsfx[num]);
+    }
+
+
+}

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using FMOD;
 
 public class InputManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class InputManager : MonoBehaviour
 
     public event Action OnClicked, OnExit;
 
+    public FMODUnity.EventReference onClickSFX;
+
     private void Start()
     {
         cam = Camera.main;
@@ -20,6 +23,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            AudioManager.instance.PlaySFX(0);
             OnClicked?.Invoke();
         }
 
@@ -60,6 +64,7 @@ public class InputManager : MonoBehaviour
             if(hit.collider.gameObject.TryGetComponent<Item>(out Item item))
             {
                 item.Rotate();
+                AudioManager.instance.PlaySFX(13);
             }
             else
             {

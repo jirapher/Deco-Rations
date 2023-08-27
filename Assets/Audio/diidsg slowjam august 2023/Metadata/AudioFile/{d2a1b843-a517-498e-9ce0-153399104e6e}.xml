@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{d2a1b843-a517-498e-9ce0-153399104e6e}">
+		<property name="assetPath">
+			<value>diidsg night theme - drum and bass layer.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>32</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{342d7785-552f-4999-9a9d-35eead1923e2}</destination>
+		</relationship>
+	</object>
+</objects>

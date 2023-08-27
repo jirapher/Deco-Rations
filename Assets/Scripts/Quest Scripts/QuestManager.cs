@@ -29,8 +29,8 @@ public class QuestManager : MonoBehaviour
     private List<GameObject> allQuestButtons = new();
     private void Start()
     {
-        GameStartQuestAdd();
         QuestReset();
+        GameStartQuestAdd();
     }
 
     private void QuestReset()
@@ -166,7 +166,7 @@ public class QuestManager : MonoBehaviour
         {
             if (database.furnitureData[i].restoresHP)
             {
-                restore += database.furnitureData[i].quantity;
+                restore += database.furnitureData[i].totalInCirculation;
             }
         }
 

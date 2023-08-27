@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{2366e2b9-71ca-43b2-a675-8850d42a1697}">
+		<property name="name">
+			<value>day intro transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3687e533-cd84-45e0-9e91-b5b825748b94}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{cb98eb92-9cef-4b70-ad63-05bee08c6a25}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{cb98eb92-9cef-4b70-ad63-05bee08c6a25}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

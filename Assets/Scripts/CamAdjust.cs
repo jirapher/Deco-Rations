@@ -15,7 +15,6 @@ public class CamAdjust : MonoBehaviour
 
     public IEnumerator SetPerspective(bool normal, bool design, bool night)
     {
-        print("SETTING CAMERA PERSPECTIVE");
         float size = 0;
         if(normal) { size = normalSize; }
         if(design) { size = designSize; }

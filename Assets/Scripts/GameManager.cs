@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public MissionManager gatherMan;
     public BlueprintManager craftMan;
     public TDManager tdMan;
+    public AudioManager audioMan;
 
     [Header("Specific Things")]
     public GameObject[] specialFunctionObjects;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
 
     public void EnterNight()
     {
+        StartCoroutine(audioMan.DayToNightTransition());
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         dayHPHolder.SetActive(false);
@@ -115,17 +117,23 @@ public class GameManager : MonoBehaviour
     {
         string notice = "";
 
+        int difference = 0;
+
         int subtract = questMan.DailyHPDrainCheck();
-        HP.value -= subtract;
+        difference -= subtract;
         notice += "You lost " + subtract + " HP from incomplete quests.<br>";
 
         int tdMinus = tdMan.HPCalc();
-        HP.value -= tdMinus;
+        difference -= tdMinus;
         notice += "You lost " + tdMinus + " HP from invaders.<br>";
 
         int add = questMan.DailyHPRestoreCheck();
-        HP.value += add;
-        notice += "You restored " + subtract + " HP from your interior design skills.<br> <br>";
+        difference += add;
+        notice += "You restored " + add + " HP from your interior design skills.<br> <br>";
+
+        print("difference:" + difference);
+
+        HP.value += difference;
 
         if (HP.value > HP.maxValue)
         {
@@ -172,6 +180,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenCraft()
     {
+        audioMan.StopLoopedSFX();
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         designUI.SetActive(true);
@@ -181,6 +190,10 @@ public class GameManager : MonoBehaviour
 
     public void OpenDesign()
     {
+        foreach (GameObject g in buildingSpecific)
+        {
+            g.SetActive(true);
+        }
         AllTabsOff();
 
         designTab.SetActive(true);

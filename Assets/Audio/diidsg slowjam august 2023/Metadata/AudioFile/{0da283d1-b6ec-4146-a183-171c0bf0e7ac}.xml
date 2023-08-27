@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{0da283d1-b6ec-4146-a183-171c0bf0e7ac}">
+		<property name="assetPath">
+			<value>FSFoley_Carrot_01-BANDLAB.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.90022675736961455</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{342d7785-552f-4999-9a9d-35eead1923e2}</destination>
+		</relationship>
+	</object>
+</objects>

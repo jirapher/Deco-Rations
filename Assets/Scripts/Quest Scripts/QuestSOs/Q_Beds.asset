@@ -15,7 +15,7 @@ MonoBehaviour:
   questName: Dawn of the Bed(s)
   questDetails: Your party is losing sleep because arthropods keep trying to nest
     in their orifices. Craft 3 beds. -1 HP every day this bedlam continues.
-  questNum: 1
+  questNum: 0
   requiredItems:
   - {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
   requiredAmount: 04000000

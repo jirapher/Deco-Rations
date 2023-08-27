@@ -15,7 +15,7 @@ MonoBehaviour:
   questName: Lap of Luxury
   questDetails: Your party has soggy bottoms! Build three chairs for your team. -1
     HP for every day your friends have to squat in the dirt.
-  questNum: 0
+  questNum: 1
   requiredItems:
   - {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
   requiredAmount: 03000000

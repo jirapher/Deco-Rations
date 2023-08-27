@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ObjectPlacer : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ObjectPlacer : MonoBehaviour
     public GameObject furnitureParent;
     public FurnitureSO database;
     public DesignUIManager designMan;
+
     public int PlaceObject(GameObject prefab, Vector2 gridPosition, int id)
     {
         GameObject go = Instantiate(prefab, furnitureParent.transform);

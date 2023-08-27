@@ -15,7 +15,7 @@ MonoBehaviour:
   questName: Bookworms
   questDetails: Kezia needs a bookshelf to store her new EP of lyrics about island
     survival. Malachi also wants one to log island data.
-  questNum: 2
+  questNum: 4
   requiredItems:
   - {fileID: 2188273352124425841, guid: 45b326d390c353c4abb8576fed2ad6db, type: 3}
   requiredAmount: 02000000

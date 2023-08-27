@@ -22,7 +22,7 @@ MonoBehaviour:
     size: {x: 1, y: 1}
     prefab: {fileID: 6982433468589861700, guid: 35f0cb1160e3dc8438c1ca8104271746, type: 3}
     quantity: 0
-    totalInCirculation: 2
+    totalInCirculation: 4
     requiredMaterialType: 
     requiredMaterialQuantity: 
     isLocked: 0
@@ -33,8 +33,8 @@ MonoBehaviour:
     itemImage: {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
-    quantity: 0
-    totalInCirculation: 0
+    quantity: 1
+    totalInCirculation: 3
     requiredMaterialType: 000000000200000003000000
     requiredMaterialQuantity: 01000000000000000100000001000000
     isLocked: 0
@@ -125,15 +125,27 @@ MonoBehaviour:
     requiredMaterialType: 010000000200000003000000
     requiredMaterialQuantity: 010000000400000004000000
     isLocked: 1
-  - name: Plant Tower
+  - name: AOE Tower
     description: PLANT TOWERRRRRRRRRRRR
     restoresHP: 0
     id: 14
     itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
-    quantity: 0
-    totalInCirculation: 3
+    quantity: 1
+    totalInCirculation: 2
     requiredMaterialType: 
     requiredMaterialQuantity: 
     isLocked: 0
+  - name: Ranged Tower
+    description: PLANT TOWERRRRRRRRRRRR
+    restoresHP: 0
+    id: 15
+    itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
+    size: {x: 1, y: 1}
+    prefab: {fileID: 5676298554688586253, guid: 8a16c1866a9f7414c9d96e58961752bf, type: 3}
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 
+    requiredMaterialQuantity: 
+    isLocked: 1
