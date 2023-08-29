@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{e18b9f94-024f-4ccd-bc29-ee9a960e0a9f}">
+		<property name="name">
+			<value>gather volume</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3687e533-cd84-45e0-9e91-b5b825748b94}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0766c108-ef76-4ef8-8876-105dc8465d73}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0766c108-ef76-4ef8-8876-105dc8465d73}">
+		<property name="maximum">
+			<value>10</value>
+		</property>
+		<property name="initialValue">
+			<value>10</value>
+		</property>
+	</object>
+</objects>
