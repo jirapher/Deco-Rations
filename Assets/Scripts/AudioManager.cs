@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     {
         bkg = FMODUnity.RuntimeManager.CreateInstance(dayTheme);
         bkg.start();
+        if(GameManager.instance.curDay == 1) { return; }
         Invoke("EnterDayTheme", 8f);
     }
 

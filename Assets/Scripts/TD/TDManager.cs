@@ -10,7 +10,7 @@ public class TDManager : MonoBehaviour
     public CamAdjust camSettings;
     public FakeSun sunSettings;
     public ObjectPlacer objectPlacer;
-    private List<GameObject> placedFurniture = new();
+    public List<GameObject> placedFurniture = new();
     public List<GameObject> allCurEnemies = new();
 
     [Header("Spawning")]

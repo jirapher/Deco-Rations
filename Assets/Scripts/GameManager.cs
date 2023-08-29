@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int curDay = 0;
     public Slider HP;
     public TMP_Text hpTxt;
+    public GameObject introSlides;
 
     [Header("Managers")]
     public QuestManager questMan;
@@ -49,6 +50,11 @@ public class GameManager : MonoBehaviour
         ToggleSpecialFunctionObjects(false);
         OpenQuest();
         IntroNotice();
+    }
+
+    public void IntroSlidesDone()
+    {
+        introSlides.SetActive(false);
     }
     private void SetHPText()
     {
@@ -100,12 +106,12 @@ public class GameManager : MonoBehaviour
         noticeHeaderTxt.text = header;
         noticeTxt.text = notice;
         NoticePanel.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void CloseNotice()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         noticeHeaderTxt.text = "";
         noticeTxt.text = "";
         NoticePanel.SetActive(false);
@@ -113,8 +119,6 @@ public class GameManager : MonoBehaviour
 
     public void NewDay()
     {
-        //idea is this cuts to night island, displays stats, then goes back to quests.
-        //will need to transition cam after TD
         tdTimer.SetActive(false);
         ToggleSpecialFunctionObjects(false);
         dayHPHolder.SetActive(true);
@@ -215,7 +219,7 @@ public class GameManager : MonoBehaviour
         if(curDay == 1) { CollectNotice(); }
 
         audioMan.StopLoopedSFX();
-        //audioMan.StartLoopedSFX(4);
+        audioMan.StartLoopedSFX(4);
         AllTabsOff();
         if (firstDay) { firstDay = false; }
         gatherTab.SetActive(true);

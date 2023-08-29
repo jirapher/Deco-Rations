@@ -150,7 +150,7 @@ public class MissionManager : MonoBehaviour
 
     public void SendButtonClicked()
     {
-        AudioManager.instance.StartLoopedSFX(4);
+        //AudioManager.instance.StartLoopedSFX(4);
 
         sendButton.SetActive(false);
 

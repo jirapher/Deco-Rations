@@ -52,7 +52,9 @@ public class ObjectPlacer : MonoBehaviour
 
         AddToDatabase(placedFurniture[gameobjectIndex].GetComponent<Item>().itemID);
         Destroy(placedFurniture[gameobjectIndex]);
-        placedFurniture[gameobjectIndex] = null;
+        placedFurniture.Remove(placedFurniture[gameobjectIndex]);
+        //placedFurniture[gameobjectIndex] = null;
+
     }
 
     public void SubtractFromDatabase(int itemID)
