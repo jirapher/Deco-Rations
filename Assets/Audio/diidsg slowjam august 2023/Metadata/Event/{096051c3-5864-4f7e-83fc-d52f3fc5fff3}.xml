@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{096051c3-5864-4f7e-83fc-d52f3fc5fff3}">
 		<property name="name">
 			<value>malachi</value>
@@ -41,6 +41,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{3ee15b01-85bc-401f-bad0-d7a2e17abb0d}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{a8c82ae9-53bf-439d-800d-466da2374233}</destination>
 		</relationship>
@@ -60,8 +63,15 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{8a6f62d0-15e5-46c7-a89f-fcaeceadf982}" />
-	<object class="MarkerTrack" id="{39d4da91-0d02-4bb1-8c7d-c478e26e066d}" />
+	<object class="MarkerTrack" id="{39d4da91-0d02-4bb1-8c7d-c478e26e066d}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{8f98e108-e48d-4ce1-bf6d-d643a7b67ce2}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{8da73509-6b6d-4786-8855-ed27e807931d}</destination>
 		</relationship>
@@ -86,6 +96,9 @@
 		</relationship>
 	</object>
 	<object class="AutomationTrack" id="{a8c82ae9-53bf-439d-800d-466da2374233}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{1b0219b4-3dba-4bd0-828f-c4af96173541}</destination>
 		</relationship>

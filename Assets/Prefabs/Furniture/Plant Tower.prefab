@@ -132,7 +132,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
   - {fileID: 21300000, guid: 8761736c0e1dbf84da1c6adf1201fbcc, type: 3}
   curDirection: 0
-  canRotate: 0
+  canRotate: 1
   itemID: 14
 --- !u!114 &-7812720840250587662
 MonoBehaviour:

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e94c773a-746c-403f-be2b-ee16cb6d8e49}">
 		<property name="name">
 			<value>gather</value>
@@ -44,6 +44,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{8b39e13d-fb20-4df1-8b8d-641c272fed40}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{38e78559-3bd8-47d9-8d14-f086a11b4f32}</destination>
 		</relationship>
@@ -59,12 +62,19 @@
 			<destination>{d02c64a2-6760-403a-a026-3fbacdcdf53f}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{5c03d6ef-639c-4181-a1b8-b9d4696495a6}</destination>
+			<destination>{4f3747da-4900-4d81-bfc8-c0340de3da59}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1c4464a9-b7d8-47b0-b00d-dd5c7de0a3e1}" />
-	<object class="MarkerTrack" id="{be9bbc17-770c-40ae-806c-6ee1ce79c154}" />
+	<object class="MarkerTrack" id="{be9bbc17-770c-40ae-806c-6ee1ce79c154}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{2cf70970-a781-46e9-8077-e15b08b2106d}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{6f0f7a49-99a5-4291-907d-50dc66d8daa0}</destination>
 		</relationship>
@@ -73,6 +83,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{e9305b91-96fb-4e44-a28a-b0dbd60b3ffb}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{86108849-d255-46c0-9ea1-06bfa74e955e}</destination>
 		</relationship>
@@ -81,15 +94,21 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{470a7956-391c-4d00-a926-76b6b5283c92}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
-			<destination>{dc22b9e2-a35a-4c5b-b697-f0191d00826c}</destination>
 			<destination>{4697d675-0f88-4e26-a68e-732bf9593486}</destination>
+			<destination>{dc22b9e2-a35a-4c5b-b697-f0191d00826c}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{cd686d60-aa0e-4b8d-913d-4208d174dfb5}</destination>
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{22b1f348-6c24-403c-a2a8-4d656356e117}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{26044fcb-11db-43e6-bfb0-3ca9b80f0848}</destination>
 		</relationship>
@@ -124,6 +143,9 @@
 		</relationship>
 	</object>
 	<object class="AutomationTrack" id="{38e78559-3bd8-47d9-8d14-f086a11b4f32}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{3773a6ce-f0bb-46ec-982d-788ad1174f05}</destination>
 		</relationship>
@@ -141,7 +163,6 @@
 		<property name="length">
 			<value>1.8</value>
 		</property>
-		<property name="name" />
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -216,18 +237,6 @@
 			<destination>{7c5d1f59-1fa5-4cec-be13-f63d5a9c33f8}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{dc22b9e2-a35a-4c5b-b697-f0191d00826c}">
-		<property name="length">
-			<value>1.1000000000000001</value>
-		</property>
-		<property name="name" />
-		<relationship name="modulators">
-			<destination>{fe44f530-715e-4b34-9eda-9eb3190ce9b3}</destination>
-		</relationship>
-		<relationship name="audioFile">
-			<destination>{e329dc53-6c73-4d4a-8c17-fa9d75701e82}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{4697d675-0f88-4e26-a68e-732bf9593486}">
 		<property name="start">
 			<value>1.2000000000000002</value>
@@ -237,6 +246,17 @@
 		</property>
 		<relationship name="modulators">
 			<destination>{650f8bc6-279e-48ee-a8a9-29611e6e6b62}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{e329dc53-6c73-4d4a-8c17-fa9d75701e82}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{dc22b9e2-a35a-4c5b-b697-f0191d00826c}">
+		<property name="length">
+			<value>1.1000000000000001</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{fe44f530-715e-4b34-9eda-9eb3190ce9b3}</destination>
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{e329dc53-6c73-4d4a-8c17-fa9d75701e82}</destination>
@@ -260,6 +280,9 @@
 		</relationship>
 	</object>
 	<object class="AutomationTrack" id="{26044fcb-11db-43e6-bfb0-3ca9b80f0848}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{2ca73f23-418f-43d7-a829-782a1b99935d}</destination>
 		</relationship>
@@ -375,20 +398,20 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a68f6fbf-60bc-4feb-b407-e65db6d4fc5c}" />
-	<object class="RandomizerModulator" id="{fe44f530-715e-4b34-9eda-9eb3190ce9b3}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>pitch</value>
-		</property>
-		<property name="amount">
-			<value>10.5</value>
-		</property>
-	</object>
 	<object class="RandomizerModulator" id="{650f8bc6-279e-48ee-a8a9-29611e6e6b62}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>
 		</property>
 		<property name="amount">
 			<value>18</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{fe44f530-715e-4b34-9eda-9eb3190ce9b3}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>10.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{d7eeecd9-ae22-43a1-ae7b-f32d15c59ae6}">

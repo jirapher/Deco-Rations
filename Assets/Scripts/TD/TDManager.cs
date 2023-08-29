@@ -10,7 +10,7 @@ public class TDManager : MonoBehaviour
     public CamAdjust camSettings;
     public FakeSun sunSettings;
     public ObjectPlacer objectPlacer;
-    public List<GameObject> placedFurniture = new();
+    private List<GameObject> placedFurniture = new();
     public List<GameObject> allCurEnemies = new();
 
     [Header("Spawning")]
@@ -18,6 +18,8 @@ public class TDManager : MonoBehaviour
     public Transform[] landSpawnPoints;
     public Transform[] seaSpawnPoints;
     public GameObject[] enemies;
+
+    public Transform noFurnitureDestination;
     //0 = land, 1 = sea, 2 = air
 
     
@@ -76,21 +78,34 @@ public class TDManager : MonoBehaviour
     {
         GameObject g = Instantiate(enemies[numToMake], null);
         EnemyMovement e = g.GetComponent<EnemyMovement>();
-        e.target = placedFurniture[Random.Range(0, placedFurniture.Count)].transform;
+
+        if(placedFurniture.Count <= 0)
+        {
+            e.target = noFurnitureDestination;
+        }
+        else
+        {
+            e.target = placedFurniture[Random.Range(0, placedFurniture.Count)].transform;
+        }
+
+        
 
         if (e.isLand)
         {
             g.transform.position = landSpawnPoints[Random.Range(0, landSpawnPoints.Length)].position;
+            AudioManager.instance.PlaySFX(15);
         }
 
         if (e.isSea)
         {
             g.transform.position = seaSpawnPoints[Random.Range(0, seaSpawnPoints.Length)].position;
+            AudioManager.instance.PlaySFX(16);
         }
 
         if (e.isAir)
         {
             g.transform.position = allSpawnPoints[Random.Range(0, allSpawnPoints.Count)].position;
+            AudioManager.instance.PlaySFX(14);
         }
 
         e.canMove = true;

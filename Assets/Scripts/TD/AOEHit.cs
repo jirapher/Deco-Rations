@@ -31,6 +31,7 @@ public class AOEHit : MonoBehaviour
         }
 
         alpha = 1;
+        AudioManager.instance.PlaySFX(17);
 
         for (float t = 0; t < 1.0f; t += Time.deltaTime / fadeTime)
         {

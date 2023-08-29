@@ -685,7 +685,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5bec7aae54a17d048a8b7674e924c07f, type: 3}
   image: {fileID: 882829414}
   fader: {fileID: 868925568}
-  pauseTime: 3
+  pauseTime: 2.5
   slideAnim: {fileID: 882829416}
 --- !u!1 &40715912
 GameObject:
@@ -1583,6 +1583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1886070923}
+  - {fileID: 1802341483}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1601,7 +1602,6 @@ MonoBehaviour:
   camSettings: {fileID: 519420033}
   sunSettings: {fileID: 1696336860}
   objectPlacer: {fileID: 1781301703}
-  placedFurniture: []
   allCurEnemies: []
   landSpawnPoints:
   - {fileID: 267788329}
@@ -1619,6 +1619,7 @@ MonoBehaviour:
   - {fileID: 5711074437679311418, guid: 8355df9bd57d6b8479e35ca1733646cc, type: 3}
   - {fileID: 5840539992682899300, guid: 50f471221696f644a8798d23a02ad0d9, type: 3}
   - {fileID: 4903546226937890025, guid: b0c143c9556a7ae49b940392e2594b29, type: 3}
+  noFurnitureDestination: {fileID: 1802341483}
   timerText: {fileID: 957496049}
   timer: 45
 --- !u!1 &180925494
@@ -5427,7 +5428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &716753290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9783,7 +9784,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.08999634, y: 0.00000667572}
   m_SizeDelta: {x: 10.33, y: -0.002}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16091,6 +16092,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789896456}
   m_CullTransparentMesh: 1
+--- !u!1 &1802341482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802341483}
+  m_Layer: 0
+  m_Name: No Furniture Attractor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1802341483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802341482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.66, y: 2.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 164617540}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816512658
 GameObject:
   m_ObjectHideFlags: 0
@@ -19693,6 +19725,30 @@ MonoBehaviour:
       Data3: 564219038
       Data4: -2109375450
     Path: event:/sfx/rotate
+  - Guid:
+      Data1: 117291400
+      Data2: 1337119969
+      Data3: 215100054
+      Data4: 1547561580
+    Path: event:/sfx/bat
+  - Guid:
+      Data1: -1379981623
+      Data2: 1211255189
+      Data3: 1454915006
+      Data4: 1210282467
+    Path: event:/sfx/squirrel
+  - Guid:
+      Data1: -2055810670
+      Data2: 1158350790
+      Data3: 414175138
+      Data4: -677301816
+    Path: event:/sfx/turtle
+  - Guid:
+      Data1: 1564144699
+      Data2: 1285682094
+      Data3: -1977368692
+      Data4: -432937042
+    Path: event:/sfx/tower hit
 --- !u!4 &2120460308
 Transform:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class TowerDefender : MonoBehaviour
 
     public IEnumerator StartCombat()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.62f);
         bool go = true;
         float aTimer = musicTime;
 

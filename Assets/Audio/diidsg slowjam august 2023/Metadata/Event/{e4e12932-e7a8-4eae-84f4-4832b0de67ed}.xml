@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e4e12932-e7a8-4eae-84f4-4832b0de67ed}">
 		<property name="name">
 			<value>pickup</value>
@@ -41,6 +41,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{6b288a25-0887-449c-9ab8-a001d037a708}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="mixerGroup">
 			<destination>{27988bed-0f20-44d2-8a6f-ebdd4ae90f9f}</destination>
 		</relationship>
@@ -53,12 +56,19 @@
 			<destination>{c135763f-3583-4f9f-bee9-a655e31d268e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{5c03d6ef-639c-4181-a1b8-b9d4696495a6}</destination>
+			<destination>{4f3747da-4900-4d81-bfc8-c0340de3da59}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{30024e77-4eac-4540-a044-e2828ef5d1dc}" />
-	<object class="MarkerTrack" id="{cd1903ce-e776-4077-9ece-20f8a5e516c8}" />
+	<object class="MarkerTrack" id="{cd1903ce-e776-4077-9ece-20f8a5e516c8}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{4b4bf010-f1d4-42f5-848f-9109c4e5bc9a}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{dafda4e3-a42d-4430-ba9f-eecf18c2df84}</destination>
 		</relationship>
@@ -92,6 +102,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{c135763f-3583-4f9f-bee9-a655e31d268e}" />
 	<object class="AutomationTrack" id="{dafda4e3-a42d-4430-ba9f-eecf18c2df84}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{82ce6c7d-59bf-4b37-ab8d-6998e749c4cb}</destination>
 		</relationship>
@@ -100,7 +113,6 @@
 		<property name="length">
 			<value>0.125</value>
 		</property>
-		<property name="name" />
 		<relationship name="modulators">
 			<destination>{98cea0d3-9aa4-4c47-8e34-22efd8cf54a5}</destination>
 		</relationship>
@@ -109,6 +121,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{10234d1b-6f1e-4b1c-b2d2-f99ee3b01da6}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

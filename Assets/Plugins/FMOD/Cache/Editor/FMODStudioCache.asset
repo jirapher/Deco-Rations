@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 125
+--- !u!114 &-7989153022235889908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/bat
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/bat
+  Guid:
+    Data1: 117291400
+    Data2: 1337119969
+    Data3: 215100054
+    Data4: 1547561580
+  Banks:
+  - {fileID: 5533927802618822457}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
 --- !u!114 &-7850861337058290642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,10 +172,10 @@ MonoBehaviour:
   Path: Assets/Audio/diidsg slowjam august 2023/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638288415169825616
+  lastModified: 638288539104879583
   FileSizes:
   - Name: Desktop
-    Value: 2170
+    Value: 2332
   Exists: 1
 --- !u!114 &-6380536024449841180
 MonoBehaviour:
@@ -548,12 +575,16 @@ MonoBehaviour:
   - {fileID: -6062049386222974294}
   - {fileID: 7203899046770688746}
   - {fileID: 580121373973978833}
+  - {fileID: 8733920840849200589}
+  - {fileID: -7989153022235889908}
+  - {fileID: 2408019341451000636}
+  - {fileID: 4339200774845822686}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5533927802618822457}
   StringsBanks:
   - {fileID: -6599335020536364960}
-  cacheTime: 638288415169825616
+  cacheTime: 638288539104879583
   cacheVersion: 131605
 --- !u!114 &153312407541490673
 MonoBehaviour:
@@ -610,6 +641,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 153333
+--- !u!114 &2408019341451000636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/turtle
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/turtle
+  Guid:
+    Data1: -2055810670
+    Data2: 1158350790
+    Data3: 414175138
+    Data4: -677301816
+  Banks:
+  - {fileID: 5533927802618822457}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
 --- !u!114 &2435086388551696500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,6 +695,33 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1416
+--- !u!114 &4339200774845822686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/squirrel
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/squirrel
+  Guid:
+    Data1: -1379981623
+    Data2: 1211255189
+    Data3: 1454915006
+    Data4: 1210282467
+  Banks:
+  - {fileID: 5533927802618822457}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1400
 --- !u!114 &4424832029688358632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,10 +785,10 @@ MonoBehaviour:
   Path: Assets/Audio/diidsg slowjam august 2023/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638288415169815609
+  lastModified: 638288539104869575
   FileSizes:
   - Name: Desktop
-    Value: 4085792
+    Value: 5586400
   Exists: 1
 --- !u!114 &6434849143316599129
 MonoBehaviour:
@@ -862,6 +947,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &8733920840849200589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/sfx/tower hit
+  m_EditorClassIdentifier: 
+  Path: event:/sfx/tower hit
+  Guid:
+    Data1: 1564144699
+    Data2: 1285682094
+    Data3: -1977368692
+    Data4: -432937042
+  Banks:
+  - {fileID: 5533927802618822457}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 100
 --- !u!114 &8811955227442428342
 MonoBehaviour:
   m_ObjectHideFlags: 0

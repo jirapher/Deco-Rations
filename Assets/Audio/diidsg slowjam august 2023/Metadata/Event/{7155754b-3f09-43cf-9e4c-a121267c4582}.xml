@@ -41,6 +41,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{e9ed03f8-34eb-46c9-8d20-2578e143e4a0}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="mixerGroup">
 			<destination>{d57042f7-78aa-440f-a35b-c9600b77c1b6}</destination>
 		</relationship>
@@ -53,12 +56,19 @@
 			<destination>{180e6483-d6fc-4d0e-b9a5-bf406b6089d4}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{5c03d6ef-639c-4181-a1b8-b9d4696495a6}</destination>
+			<destination>{4f3747da-4900-4d81-bfc8-c0340de3da59}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{35811582-1261-4817-86af-c037f59c9fab}" />
-	<object class="MarkerTrack" id="{4e4226fc-d755-4066-ae70-e0ce7b9e09e7}" />
+	<object class="MarkerTrack" id="{4e4226fc-d755-4066-ae70-e0ce7b9e09e7}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{34084918-d782-4ae7-85f5-ec42adc29e58}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{e3b48438-bd39-4bd2-b4a7-59f7d99f2537}</destination>
 		</relationship>
@@ -97,6 +107,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{180e6483-d6fc-4d0e-b9a5-bf406b6089d4}" />
 	<object class="AutomationTrack" id="{e3b48438-bd39-4bd2-b4a7-59f7d99f2537}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{09593ff9-989b-4d78-b2d8-ce79c76f135d}</destination>
 		</relationship>
@@ -134,7 +147,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{56f99ff4-b536-496a-9c63-4072325d607a}">
 		<property name="volume">
-			<value>3</value>
+			<value>2.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>

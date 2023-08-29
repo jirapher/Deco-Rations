@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{de0aeac6-8231-45fd-b782-e90bff3f6892}">
 		<property name="name">
 			<value>dirk</value>
@@ -41,6 +41,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{0c8ff069-b555-4dd7-a0b4-b2a6f5e6c4a6}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="mixerGroup">
 			<destination>{a2742b31-fa42-42b4-b3f7-fbea4e9d66e8}</destination>
 		</relationship>
@@ -57,8 +60,15 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{bcdcd16b-3ee4-43ed-ba17-db239adf5a1e}" />
-	<object class="MarkerTrack" id="{0717a1f4-3936-40c6-9853-16a5f863581a}" />
+	<object class="MarkerTrack" id="{0717a1f4-3936-40c6-9853-16a5f863581a}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{b3fce2ad-6356-4773-95e6-adb29cbbea50}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automationTracks">
 			<destination>{b59535c2-f56f-407f-a31c-5e2c2fc2c50c}</destination>
 		</relationship>
@@ -92,6 +102,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{254e0a12-8c37-49e5-98b9-32f47d8ad6fe}" />
 	<object class="AutomationTrack" id="{b59535c2-f56f-407f-a31c-5e2c2fc2c50c}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="automator">
 			<destination>{73d7505b-0171-4947-ac74-88f70bdffde8}</destination>
 		</relationship>
@@ -193,17 +206,9 @@
 			<destination>{68aec4db-1817-4e1f-b97c-413149b5e9b8}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{275e69e9-681f-4044-a4db-ad34fcbea456}</destination>
 			<destination>{442ab01c-feb9-40d4-aa25-7da1cbd765cb}</destination>
+			<destination>{275e69e9-681f-4044-a4db-ad34fcbea456}</destination>
 		</relationship>
-	</object>
-	<object class="AutomationPoint" id="{275e69e9-681f-4044-a4db-ad34fcbea456}">
-		<property name="position">
-			<value>10</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
 	</object>
 	<object class="AutomationPoint" id="{442ab01c-feb9-40d4-aa25-7da1cbd765cb}">
 		<property name="position">
@@ -211,6 +216,14 @@
 		</property>
 		<property name="value">
 			<value>-80</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{275e69e9-681f-4044-a4db-ad34fcbea456}">
+		<property name="position">
+			<value>10</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 </objects>

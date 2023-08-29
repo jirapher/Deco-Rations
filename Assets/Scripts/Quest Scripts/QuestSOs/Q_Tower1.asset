@@ -18,7 +18,7 @@ MonoBehaviour:
     yourself!
   questNum: 3
   requiredItems:
-  - {fileID: 1676137644279503874, guid: 5053338732959e947a07824e24f44808, type: 3}
+  - {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
   requiredAmount: 01000000
   drainsHP: 0
   rewardId: 0f000000

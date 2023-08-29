@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void IntroSlidesDone()
     {
         introSlides.SetActive(false);
+        dayHPHolder.SetActive(true);
     }
     private void SetHPText()
     {

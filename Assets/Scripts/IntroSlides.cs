@@ -22,7 +22,6 @@ public class IntroSlides : MonoBehaviour
         int curSlide = 0;
         while (curSlide < allSlides.Length -1)
         {
-            print(curSlide);
             yield return new WaitForSeconds(pauseTime);
             StartCoroutine(FadeIn());
             yield return new WaitForSeconds(1f);
@@ -39,7 +38,7 @@ public class IntroSlides : MonoBehaviour
 
         yield return new WaitForSeconds(pauseTime);
         StartCoroutine(FadeIn());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         image.gameObject.SetActive(false);
         AudioManager.instance.EnterDayTheme();
         StartCoroutine(FadeOut());
