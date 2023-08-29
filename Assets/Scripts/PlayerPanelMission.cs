@@ -9,7 +9,7 @@ public class PlayerPanelMission : MonoBehaviour
     public MissionManager missionMan;
     public int playerNum = 0;
     public string playerName;
-
+    public int sfxToPlay = -1;
     public int gatherAmt = -1;
 
     private bool selectable = true;
@@ -20,6 +20,7 @@ public class PlayerPanelMission : MonoBehaviour
         missionMan.SetSelectedPlayer(playerName, portrait.sprite, gatherAmt);
         portrait.enabled = false;
         selectable = false;
+        AudioManager.instance.PlaySFX(sfxToPlay);
     }
 
     public void ResetPortrait()

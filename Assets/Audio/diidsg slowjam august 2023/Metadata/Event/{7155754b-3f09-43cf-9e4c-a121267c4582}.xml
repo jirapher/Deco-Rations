@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{7155754b-3f09-43cf-9e4c-a121267c4582}">
 		<property name="name">
 			<value>rotate</value>
@@ -105,7 +105,6 @@
 		<property name="length">
 			<value>0.5</value>
 		</property>
-		<property name="name" />
 		<relationship name="automators">
 			<destination>{09593ff9-989b-4d78-b2d8-ce79c76f135d}</destination>
 		</relationship>
@@ -126,7 +125,6 @@
 		<property name="timelockedOffset">
 			<value>0.65229571122140506</value>
 		</property>
-		<property name="name" />
 		<relationship name="modulators">
 			<destination>{87de23c1-a5cd-48c7-a5d5-a1c9d30b10ba}</destination>
 		</relationship>
@@ -136,7 +134,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{56f99ff4-b536-496a-9c63-4072325d607a}">
 		<property name="volume">
-			<value>2.5</value>
+			<value>3</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>

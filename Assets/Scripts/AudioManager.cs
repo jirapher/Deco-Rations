@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator DayToNightTransition()
     {
+        StopLoopedSFX();
         bkg.setParameterByName("day intro transition", 0);
         bkg.setParameterByName("day stop and start", 0);
 
@@ -59,7 +60,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopLoopedSFX()
     {
-        sfx.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        sfx.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void PlaySFX(int num)

@@ -43,6 +43,13 @@ public class AOEHit : MonoBehaviour
 
     }
 
+    public void Deactivate()
+    {
+        StopAllCoroutines();
+        col.enabled = false;
+        sr.color = Color.clear;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Enemy")

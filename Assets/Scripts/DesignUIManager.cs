@@ -14,11 +14,19 @@ public class DesignUIManager : MonoBehaviour
     public GameObject newDayButton;
 
     public Color lockedColor;
-    private Color normalColor;
 
     private void Start()
     {
         ResetAllFurnitureQuantity();
+        AddFreeTower();
+    }
+
+    private void AddFreeTower()
+    {
+        FurnitureData f = database.furnitureData[9];
+        f.quantity++;
+        f.totalInCirculation++;
+        AddItemToInventory(f);
     }
 
     public void ResetAllFurnitureQuantity()

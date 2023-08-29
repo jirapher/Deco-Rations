@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text dayText;
     public int curDay = 0;
     public Slider HP;
+    public TMP_Text hpTxt;
 
     [Header("Managers")]
     public QuestManager questMan;
@@ -34,22 +36,55 @@ public class GameManager : MonoBehaviour
     public TMP_Text noticeTxt;
     public TMP_Text noticeHeaderTxt;
     public GameObject dayHPHolder;
+    public GameObject quitButton;
+    public GameObject resetButton;
     //quest > gather > craft > build
     private void Start()
     {
         instance = this;
         curDay = 1;
         SetDayDisplay();
-        HP.value = 10;
+        SetHPText();
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         OpenQuest();
         IntroNotice();
     }
+    private void SetHPText()
+    {
+        hpTxt.text = "HP: " + HP.value + "/" + HP.maxValue;
+    }
 
     private void IntroNotice()
     {
         SetGameNotice("Click on a button in the Quest Tracker to show details. When you're done, use the green button in the corner to start gathering resources!", "The Quest Screen");
+    }
+
+    private void DesignNotice()
+    {
+        SetGameNotice("Click items in your inventory and start designing! Right click over placed furniture to rotate it. Storing puts things back in inventory. Click 'Finished' when you're uh, ya know, finished.", "The Design Screen");
+    }
+
+    private void DeathNotice()
+    {
+        SetGameNotice("Oof. How unfashionable can you get? You're so passé that everyone perished. You should probably take a redo on that.", "Death by Design");
+        quitButton.SetActive(true);
+        resetButton.SetActive(true);
+    }
+
+    private void CollectNotice()
+    {
+        SetGameNotice("Click a character on the left and then click a destination to send them to. <br> Beach returns wood <br> River returns stones <br> Cave returns seeds <br> Woods return vines", "The Collection Screen");
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void ResetButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ToggleSpecialFunctionObjects(bool on)
@@ -85,10 +120,12 @@ public class GameManager : MonoBehaviour
         dayHPHolder.SetActive(true);
         curDay++;
         nightStatsScreen.SetActive(true);
+
         if(curDay > 3)
         {
             questMan.DailyQuestAdd();
         }
+
         string header = "Day " + curDay + ".";
         SetDayDisplay();
         string notice = HPCheck();
@@ -100,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void EnterNight()
     {
-        StartCoroutine(audioMan.DayToNightTransition());
+        //StartCoroutine(audioMan.DayToNightTransition());
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         dayHPHolder.SetActive(false);
@@ -131,9 +168,11 @@ public class GameManager : MonoBehaviour
         difference += add;
         notice += "You restored " + add + " HP from your interior design skills.<br> <br>";
 
-        print("difference:" + difference);
+        //print("difference:" + difference);
 
         HP.value += difference;
+
+        SetHPText();
 
         if (HP.value > HP.maxValue)
         {
@@ -143,7 +182,7 @@ public class GameManager : MonoBehaviour
 
         if(HP.value <= 0)
         {
-            notice += "Everyone died...";
+            DeathNotice();
         }
 
         return notice;
@@ -173,6 +212,10 @@ public class GameManager : MonoBehaviour
 
     public void OpenCollection()
     {
+        if(curDay == 1) { CollectNotice(); }
+
+        audioMan.StopLoopedSFX();
+        //audioMan.StartLoopedSFX(4);
         AllTabsOff();
         if (firstDay) { firstDay = false; }
         gatherTab.SetActive(true);
@@ -181,6 +224,8 @@ public class GameManager : MonoBehaviour
     public void OpenCraft()
     {
         audioMan.StopLoopedSFX();
+        audioMan.StartLoopedSFX(1);
+
         AllTabsOff();
         ToggleSpecialFunctionObjects(false);
         designUI.SetActive(true);
@@ -190,6 +235,9 @@ public class GameManager : MonoBehaviour
 
     public void OpenDesign()
     {
+        if(curDay == 1) { DesignNotice(); }
+
+        audioMan.StopLoopedSFX();
         foreach (GameObject g in buildingSpecific)
         {
             g.SetActive(true);

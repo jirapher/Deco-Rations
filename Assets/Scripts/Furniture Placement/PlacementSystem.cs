@@ -27,6 +27,8 @@ public class PlacementSystem : MonoBehaviour
 
     IBuildingState buildingState;
 
+    //private int activePieceID = -1;
+
     private void Start()
     {
         StopPlacement();
@@ -52,6 +54,7 @@ public class PlacementSystem : MonoBehaviour
     {
         StopPlacement();
         gridVisual.SetActive(true);
+        //activePieceID = ID;
         buildingState = new PlacementState(ID, grid, preview, database, floorData, furnitureData, placer);
         inputMan.OnClicked += PlaceStructure;
         inputMan.OnExit += StopPlacement;
@@ -72,8 +75,8 @@ public class PlacementSystem : MonoBehaviour
 
         Vector2 mousePos = inputMan.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePos);
-
         buildingState.OnAction(gridPosition);
+        //placer.SubtractFromDatabase(activePieceID);
         StopPlacement();
     }
 
@@ -95,6 +98,7 @@ public class PlacementSystem : MonoBehaviour
         inputMan.OnExit -= StopPlacement;
         lastDetectedPosition = Vector3Int.zero;
         buildingState = null;
+        //activePieceID = -1;
     }
 
 

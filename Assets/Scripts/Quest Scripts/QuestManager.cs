@@ -140,7 +140,7 @@ public class QuestManager : MonoBehaviour
         q.GetComponent<QuestButton>().SetData(quest.questName, quest.questNum, quest.drainsHP);
         allQuestButtons.Add(q);
         activeQuests.Add(quest);
-        curQuestNum++;
+        //curQuestNum++;
     }
 
     public int DailyHPDrainCheck()
@@ -180,7 +180,7 @@ public class QuestManager : MonoBehaviour
             curQuestNum++;
         }
 
-        if(curQuestNum > allQuests.Count - 1) { return; }
+        if (curQuestNum > allQuests.Count) { return; }
 
         AddNewQuest(allQuests[curQuestNum]);
     }
@@ -195,6 +195,8 @@ public class QuestManager : MonoBehaviour
         }
 
         RemoveQuest(quest);
+
+        AudioManager.instance.PlaySFX(10);
     }
 
     public void RemoveQuest(QuestSO quest)
@@ -242,6 +244,7 @@ public class QuestManager : MonoBehaviour
 
     public void QuestCheck()
     {
+        List<QuestSO> completeList = new();
 
         foreach(QuestSO q in activeQuests)
         {
@@ -269,8 +272,14 @@ public class QuestManager : MonoBehaviour
 
             if(totalChecks >= checksToPass)
             {
-                QuestComplete(q);
+                completeList.Add(q);
+                //QuestComplete(q);
             }
+        }
+
+        foreach(QuestSO q in completeList)
+        {
+            QuestComplete(q);
         }
     }
 

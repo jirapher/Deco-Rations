@@ -249,3 +249,6 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 6103900407505759241}
   detectionCollider: {fileID: 8939842236252575151}
   aoeHit: {fileID: 0}
+  whole: 0
+  half: 1
+  quarter: 0

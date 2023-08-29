@@ -11,7 +11,7 @@ public class TDManager : MonoBehaviour
     public FakeSun sunSettings;
     public ObjectPlacer objectPlacer;
     private List<GameObject> placedFurniture = new();
-    private List<GameObject> allCurEnemies = new();
+    public List<GameObject> allCurEnemies = new();
 
     [Header("Spawning")]
     private List<Transform> allSpawnPoints = new();
@@ -23,7 +23,7 @@ public class TDManager : MonoBehaviour
     
 
     public TMP_Text timerText;
-    public float timer = 60f;
+    public float timer = 45f;
 
     private void Start()
     {
@@ -45,10 +45,11 @@ public class TDManager : MonoBehaviour
     }
     public void Sunset()
     {
-        //starts everything
+        timerText.text = "00:00";
         StartCoroutine(sunSettings.ChangeColor(false));
         StartCoroutine(camSettings.SetPerspective(false, false, true));
         GetPlacedFurniture();
+        StartCoroutine(AudioManager.instance.DayToNightTransition());
         ActivateTowers();
         EnemyCalc(GameManager.instance.curDay);
     }
@@ -66,9 +67,7 @@ public class TDManager : MonoBehaviour
         {
             if (placedFurniture[i].TryGetComponent<TowerDefender>(out TowerDefender td))
             {
-                //animals shouldn't target towers?
                 StartCoroutine(td.StartCombat());
-                //placedFurniture.RemoveAt(i);
             }
         }
     }
@@ -113,10 +112,10 @@ public class TDManager : MonoBehaviour
 
     private IEnumerator InvasionStart(float spawnTime, int highestToMake, int dayNum)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         StartCoroutine(RunTimer());
-
-        while(timer > 30)
+        highestToMake += 1;
+        while(timer > 25)
         {
             float t = spawnTime;
             while(t > 0)
@@ -131,11 +130,31 @@ public class TDManager : MonoBehaviour
 
         while(timer > 0)
         {
+            if (AllDead())
+            {
+                EndOfNight();
+                yield break;
+            }
+
             yield return null;
         }
 
         EndOfNight();
         yield break;
+    }
+
+    private bool AllDead()
+    {
+        if(allCurEnemies.Count <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            allCurEnemies.RemoveAll(x => x == null);
+        }
+
+        return false;
     }
 
     private IEnumerator RunTimer()
@@ -159,13 +178,25 @@ public class TDManager : MonoBehaviour
 
     private void EndOfNight()
     {
-        timer = 60f;
+        timer = 45f;
+        DeactivateTowers();
         //print("Come back here...");
         Camera.main.orthographicSize = 10;
         //StartCoroutine(camSettings.SetPerspective(true, false, false));
         //cut to night scene
         GameManager.instance.NewDay();
         sunSettings.BackToNormal();
+    }
+
+    private void DeactivateTowers()
+    {
+        for (int i = 0; i < placedFurniture.Count; i++)
+        {
+            if (placedFurniture[i].TryGetComponent<TowerDefender>(out TowerDefender td))
+            {
+                td.EndCombat();
+            }
+        }
     }
 
     public int HPCalc()
@@ -178,12 +209,6 @@ public class TDManager : MonoBehaviour
                 HPminus += 1;
             }   
         }
-
-        /*if(GameManager.instance.curDay <= 3)
-        {
-            HPminus = Mathf.RoundToInt(0.5f * HPminus);
-        }*/
-        
 
         DestroyAllEnemies();
 

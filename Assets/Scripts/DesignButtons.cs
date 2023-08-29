@@ -11,11 +11,6 @@ public class DesignButtons : MonoBehaviour
     public int quantity;
     public int itemID;
     public PlacementSystem placementSystem;
-
-    private void Start()
-    {
-        //placementSystem = FindObjectOfType<PlacementSystem>();
-    }
     public void AdjustQuantity(int newQuantity)
     {
         quantity = newQuantity;

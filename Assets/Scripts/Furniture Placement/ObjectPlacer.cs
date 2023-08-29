@@ -10,7 +10,6 @@ public class ObjectPlacer : MonoBehaviour
     public GameObject furnitureParent;
     public FurnitureSO database;
     public DesignUIManager designMan;
-
     public int PlaceObject(GameObject prefab, Vector2 gridPosition, int id)
     {
         GameObject go = Instantiate(prefab, furnitureParent.transform);
@@ -18,6 +17,7 @@ public class ObjectPlacer : MonoBehaviour
         //go.GetComponent<Item>().SetID(id);
         SubtractFromDatabase(id);
         placedFurniture.Add(go);
+        AudioManager.instance.PlaySFX(12);
         return placedFurniture.Count - 1;
     }
 

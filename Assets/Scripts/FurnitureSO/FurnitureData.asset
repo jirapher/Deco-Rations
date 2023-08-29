@@ -21,11 +21,12 @@ MonoBehaviour:
     itemImage: {fileID: 21300000, guid: deb2d377aa3d2f34fa23a1d747e7bd1a, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 6982433468589861700, guid: 35f0cb1160e3dc8438c1ca8104271746, type: 3}
-    quantity: 0
-    totalInCirculation: 4
-    requiredMaterialType: 
-    requiredMaterialQuantity: 
+    quantity: 8
+    totalInCirculation: 8
+    requiredMaterialType: 00000000000000000000000000000000
+    requiredMaterialQuantity: 00000000000000000000000000000000
     isLocked: 0
+    isFree: 1
   - name: Chair
     description: A four-legged cheek-holder.
     restoresHP: 0
@@ -33,11 +34,12 @@ MonoBehaviour:
     itemImage: {fileID: 21300000, guid: 8f37a86b1a080364491b29554b28e264, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 6476386469973651983, guid: d2f2f1978dc281e49a4a4cd3b512f807, type: 3}
-    quantity: 1
-    totalInCirculation: 3
-    requiredMaterialType: 000000000200000003000000
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000000000000100000001000000
     isLocked: 0
+    isFree: 0
   - name: Table
     description: It's a table
     restoresHP: 0
@@ -47,11 +49,12 @@ MonoBehaviour:
     prefab: {fileID: 6982433468589861700, guid: 5aa8b61c581546e488f74aaae806bd4f, type: 3}
     quantity: 0
     totalInCirculation: 0
-    requiredMaterialType: 000000000200000003000000
+    requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000000000000300000001000000
     isLocked: 0
+    isFree: 0
   - name: Island Bed
-    description: A full-sized bed with a breathable front-print blanket.
+    description: A full-sized bed with a breathable frond-print blanket.
     restoresHP: 0
     id: 3
     itemImage: {fileID: 21300000, guid: 0a02eb715e540d141915d21220e8d06a, type: 3}
@@ -59,9 +62,10 @@ MonoBehaviour:
     prefab: {fileID: 2172340859143943776, guid: 9cdf61dd371cc514b829f8e44fc7fc05, type: 3}
     quantity: 0
     totalInCirculation: 0
-    requiredMaterialType: 000000000200000003000000
+    requiredMaterialType: 00000000020000000300000003000000
     requiredMaterialQuantity: 01000000000000000200000001000000
     isLocked: 0
+    isFree: 0
   - name: Lamp
     description: A light for night.
     restoresHP: 0
@@ -74,6 +78,7 @@ MonoBehaviour:
     requiredMaterialType: 00000000010000000200000003000000
     requiredMaterialQuantity: 01000000010000000100000001000000
     isLocked: 1
+    isFree: 0
   - name: Mini-fridge
     description: Nobody likes warm coconut water!
     restoresHP: 1
@@ -84,8 +89,9 @@ MonoBehaviour:
     quantity: 0
     totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000
-    requiredMaterialQuantity: 01000000010000000100000001000000
-    isLocked: 1
+    requiredMaterialQuantity: 04000000030000000400000004000000
+    isLocked: 0
+    isFree: 0
   - name: Plant
     description: A great way to put the thing you're trying to escape back in your
       house.
@@ -97,8 +103,9 @@ MonoBehaviour:
     quantity: 0
     totalInCirculation: 0
     requiredMaterialType: 00000000010000000200000003000000
-    requiredMaterialQuantity: 01000000010000000100000001000000
+    requiredMaterialQuantity: 03000000030000000100000001000000
     isLocked: 1
+    isFree: 0
   - name: Bookshelf
     description: It's a shelf for books - mainly Malachi's poetry and Kezia's song
       lyrics.
@@ -109,9 +116,10 @@ MonoBehaviour:
     prefab: {fileID: 2188273352124425841, guid: 45b326d390c353c4abb8576fed2ad6db, type: 3}
     quantity: 0
     totalInCirculation: 0
-    requiredMaterialType: 010000000200000003000000
-    requiredMaterialQuantity: 020000000600000003000000
-    isLocked: 1
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 02000000040000000400000002000000
+    isLocked: 0
+    isFree: 0
   - name: Divider
     description: A proper way to give party members the option to hide their dangly
       bits.
@@ -122,21 +130,23 @@ MonoBehaviour:
     prefab: {fileID: 6870802623920587983, guid: 05531623c3037844290df4fb4c4e61b0, type: 3}
     quantity: 0
     totalInCirculation: 0
-    requiredMaterialType: 010000000200000003000000
-    requiredMaterialQuantity: 010000000400000004000000
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 02000000040000000200000004000000
     isLocked: 1
+    isFree: 0
   - name: AOE Tower
-    description: PLANT TOWERRRRRRRRRRRR
+    description: PLANT TOWER
     restoresHP: 0
     id: 14
     itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
-    quantity: 1
-    totalInCirculation: 2
-    requiredMaterialType: 
-    requiredMaterialQuantity: 
+    quantity: 0
+    totalInCirculation: 0
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 02000000010000000400000004000000
     isLocked: 0
+    isFree: 0
   - name: Ranged Tower
     description: PLANT TOWERRRRRRRRRRRR
     restoresHP: 0
@@ -146,6 +156,7 @@ MonoBehaviour:
     prefab: {fileID: 5676298554688586253, guid: 8a16c1866a9f7414c9d96e58961752bf, type: 3}
     quantity: 0
     totalInCirculation: 0
-    requiredMaterialType: 
-    requiredMaterialQuantity: 
+    requiredMaterialType: 00000000010000000200000003000000
+    requiredMaterialQuantity: 040000000a0000000300000004000000
     isLocked: 1
+    isFree: 0

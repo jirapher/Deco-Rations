@@ -149,12 +149,15 @@ MonoBehaviour:
   shoot: 0
   aoe: 1
   freeze: 0
-  detectionCollider: {fileID: 5781595955901604232}
   curTarget: {fileID: 0}
+  activationSpeed: 3
   projectile: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
+  detectionCollider: {fileID: 5781595955901604232}
   aoeHit: {fileID: 8674354884485501481}
-  activationSpeed: 3
+  whole: 1
+  half: 0
+  quarter: 0
 --- !u!1 &5781595955901604232
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,11 +11,11 @@ public class EnemyMovement : MonoBehaviour
     public bool isLand, isSea, isAir;
     public int HP = 1;
     public SpriteRenderer sr;
-    private CircleCollider2D col;
-
+    //private CircleCollider2D col;
+    private bool damHold;
     private void Start()
     {
-        col = GetComponent<CircleCollider2D>();
+        //col = GetComponent<CircleCollider2D>();
     }
 
     private void Update()
@@ -45,20 +45,20 @@ public class EnemyMovement : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-        if (!col.enabled) { return; }
-        col.enabled = false;
-        Invoke("ColOn", .5f);
+        if (damHold) { return; }
+        damHold = true;
+        Invoke("CanDamage", .5f);
         HP -= damageToTake;
         if(HP <= 0)
         {
             TDManager.instance.EnemyDestroySelf(gameObject);
+            StartCoroutine(FadeOutDeath());
         }
-        StartCoroutine(FadeOutDeath());
     }
 
-    private void ColOn()
+    public void CanDamage()
     {
-        col.enabled = true;
+        damHold = false;
     }
 
     private IEnumerator FadeOutDeath()

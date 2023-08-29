@@ -69,6 +69,13 @@ public class BlueprintManager : MonoBehaviour
 
     public void SetRequirementsText()
     {
+        if (selectedFurniture.isFree)
+        {
+            requirements.text = "";
+            craftingButton.SetActive(true);
+            return;
+        }
+
         if (selectedFurniture.isLocked)
         {
             itemDescription.text = "Complete missions to unlock this item.";
@@ -84,24 +91,28 @@ public class BlueprintManager : MonoBehaviour
             {
                 case 0:
                     int vines = selectedFurniture.requiredMaterialQuantity[0];
+                    if(vines == 0) { break; }
                     requirements.text += vines.ToString() + " vine<br>";
                     if(inventory.vines < vines) { canCraft = false; }
                     break;
 
                 case 1:
                     int seed = selectedFurniture.requiredMaterialQuantity[1];
+                    if (seed == 0) { break; }
                     requirements.text += seed.ToString() + " seed<br>";
                     if (inventory.seeds < seed) { canCraft = false; }
                     break;
 
                 case 2:
                     int wood = selectedFurniture.requiredMaterialQuantity[2];
+                    if(wood == 0) { break; }
                     requirements.text += wood.ToString() + " wood<br>";
                     if (inventory.wood < wood) { canCraft = false; }
                     break;
 
                 case 3:
                     int rock = selectedFurniture.requiredMaterialQuantity[3];
+                    if(rock == 0) { break; }
                     requirements.text += rock.ToString() + " stone<br>";
                     if (inventory.rocks < rock) { canCraft = false; }
                     break;

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 1.25
+  moveSpeed: 1.75
   stoppingDistance: 0.25
   canMove: 0
   isLand: 1

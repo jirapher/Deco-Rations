@@ -20,17 +20,33 @@ public class TowerDefender : MonoBehaviour
 
     private TDManager manager;
 
+    public bool whole, half, quarter;
+    private float musicTime = 0;
     private void Start()
     {
         manager = TDManager.instance;
+        NoteAssignment();
+        //half note = twice per measure.
+        // half = 4; 
+        //set wait time to random either 
+    }
+
+    private void NoteAssignment()
+    {
+        float time = 0;
+        if (whole) { time = 2; }
+        if (half) { time = 1; }
+        if (quarter) { time = 0.5f; }
+        musicTime = time;
     }
 
     public IEnumerator StartCombat()
     {
-        //figure out bpm -- translate to timer
-        float aTimer = activationSpeed;
+        yield return new WaitForSeconds(0.5f);
+        bool go = true;
+        float aTimer = musicTime;
 
-        while(manager.timer > 1)
+        while(go)
         {
             aTimer -= Time.deltaTime;
             if(aTimer <= 0f)
@@ -45,11 +61,20 @@ public class TowerDefender : MonoBehaviour
                     StartCoroutine(aoeHit.Activate());
                 }
 
-                aTimer = activationSpeed;
+                aTimer = musicTime;
             }
 
             yield return null;
 
+        }
+    }
+
+    public void EndCombat()
+    {
+        StopAllCoroutines();
+        if (aoe)
+        {
+            aoeHit.Deactivate();
         }
     }
 
