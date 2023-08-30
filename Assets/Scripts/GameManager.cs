@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject dayHPHolder;
     public GameObject quitButton;
     public GameObject resetButton;
+    public GameObject continueGameButton;
     //quest > gather > craft > build
     private void Start()
     {
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     private void IntroNotice()
     {
-        SetGameNotice("Click on a button in the Quest Tracker to show details. When you're done, use the green button in the corner to start gathering resources!", "The Quest Screen");
+        SetGameNotice("Click on a button in the Quest Tracker to show details. When you're done, use the button in the corner to start gathering resources!", "The Quest Screen");
     }
 
     private void DesignNotice()
@@ -79,9 +80,23 @@ public class GameManager : MonoBehaviour
         resetButton.SetActive(true);
     }
 
+    private void WinGameNotice()
+    {
+        SetGameNotice("Malachi just spotted an incoming cruise ship! You have to make the tough decision. Would you like to be rescued? Or would you like to act like this was all intentional and open your own island resort?", "The Big Question");
+        quitButton.SetActive(true);
+        continueGameButton.SetActive(true);
+    }
+
     private void CollectNotice()
     {
         SetGameNotice("Click a character on the left and then click a destination to send them to. <br> Beach returns wood <br> River returns stones <br> Cave returns seeds <br> Woods return vines", "The Collection Screen");
+    }
+
+    public void ContinueGameButton()
+    {
+        continueGameButton.SetActive(false);
+        quitButton.SetActive(false);
+        CloseNotice();
     }
 
     public void QuitButton()
@@ -211,6 +226,11 @@ public class GameManager : MonoBehaviour
 
     public void OpenQuest()
     {
+        if(curDay == 10)
+        {
+            WinGameNotice();
+        }
+
         AllTabsOff();
         questTab.SetActive(true);
     }

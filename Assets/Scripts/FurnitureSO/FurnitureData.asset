@@ -134,25 +134,25 @@ MonoBehaviour:
     requiredMaterialQuantity: 02000000020000000200000002000000
     isLocked: 1
     isFree: 0
-  - name: AOE Tower
-    description: A tower that slams the ground to scare animals and keep you awake
-      all night.
+  - name: Stone Tower
+    description: A tower that slams the ground to scare away animals and keep you
+      awake all night.
     restoresHP: 0
     id: 14
-    itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
+    itemImage: {fileID: 21300000, guid: b2009715ebbe7a246859bf7dd31c4750, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
     quantity: 0
     totalInCirculation: 1
     requiredMaterialType: 00000000010000000200000003000000
-    requiredMaterialQuantity: 02000000010000000200000000000000
+    requiredMaterialQuantity: 02000000000000000200000003000000
     isLocked: 0
     isFree: 0
-  - name: Ranged Tower
-    description: A tower that can bombard animals from a distance!
+  - name: Peacock Tower
+    description: A ranged tower that can (humanely) bombard animals from a distance!
     restoresHP: 0
     id: 15
-    itemImage: {fileID: 21300000, guid: fd0c5c24e9d4df149a2101e58c59101a, type: 3}
+    itemImage: {fileID: 21300000, guid: 6364f45bd6991c344b51237a3b9564c3, type: 3}
     size: {x: 1, y: 1}
     prefab: {fileID: 5676298554688586253, guid: 8a16c1866a9f7414c9d96e58961752bf, type: 3}
     quantity: 0

@@ -18,6 +18,7 @@ public class TDManager : MonoBehaviour
     public Transform[] landSpawnPoints;
     public Transform[] seaSpawnPoints;
     public GameObject[] enemies;
+    public GameObject squirrelBoss;
 
     public Transform noFurnitureDestination;
     //0 = land, 1 = sea, 2 = air
@@ -78,6 +79,7 @@ public class TDManager : MonoBehaviour
     {
         GameObject g = Instantiate(enemies[numToMake], null);
         EnemyMovement e = g.GetComponent<EnemyMovement>();
+
 
         if(placedFurniture.Count <= 0)
         {
@@ -248,15 +250,15 @@ public class TDManager : MonoBehaviour
             break;
 
             case 2:
-                StartCoroutine(InvasionStart(5f, 0, dayNum));
+                StartCoroutine(InvasionStart(4.8f, 0, dayNum));
                 break;
 
             case 3:
-                StartCoroutine(InvasionStart(4.5f, 1, dayNum));
+                StartCoroutine(InvasionStart(4.2f, 1, dayNum));
                 break;
 
             case 4:
-                StartCoroutine(InvasionStart(4.25f, 1, dayNum));
+                StartCoroutine(InvasionStart(4f, 1, dayNum));
                 break;
 
             case 5:
@@ -265,16 +267,35 @@ public class TDManager : MonoBehaviour
 
             case 6:
                 StartCoroutine(InvasionStart(3f, 2, dayNum));
+                ReleaseGiantSquirrel();
                 break;
 
             case 7:
-                StartCoroutine(InvasionStart(2.6f, 2, dayNum));
+                StartCoroutine(InvasionStart(2.5f, 2, dayNum));
                 break;
 
             case 8:
                 StartCoroutine(InvasionStart(2f, 2, dayNum));
                 break;
+
+            case 9:
+                StartCoroutine(InvasionStart(.5f, 2, dayNum));
+                break;
         }
+    }
+
+    private void ReleaseGiantSquirrel()
+    {
+        GameObject g = Instantiate(squirrelBoss, null);
+        EnemyMovement e = g.GetComponent<EnemyMovement>();
+        e.target = noFurnitureDestination;
+
+        g.transform.position = landSpawnPoints[Random.Range(0, landSpawnPoints.Length)].position;
+        AudioManager.instance.PlaySFX(15);
+
+        e.canMove = true;
+        //needs to access list of currently placed furniture (placement system?) *not database..
+        allCurEnemies.Add(g);
     }
 
     //waves of animals

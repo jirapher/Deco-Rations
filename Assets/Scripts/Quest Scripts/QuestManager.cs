@@ -175,12 +175,14 @@ public class QuestManager : MonoBehaviour
 
     public void DailyQuestAdd()
     {
-        if (allQuests[curQuestNum].complete)
+        if (curQuestNum > 5) { return; }
+
+        while (allQuests[curQuestNum].complete)
         {
             curQuestNum++;
         }
 
-        if (curQuestNum > allQuests.Count) { return; }
+        if (curQuestNum > 5) { return; }
 
         AddNewQuest(allQuests[curQuestNum]);
     }

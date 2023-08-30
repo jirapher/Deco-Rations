@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
+  m_Name: Q_Tower_2
+  m_EditorClassIdentifier: 
+  questName: Master of the Night, Man!
+  questDetails: Dirk says he saw rabid bats. Dirk says a lot of things, but you should
+    probably decorate for the worst. Build a Peacock Tower to tell those bats, "THIS
+    IS MY HOUSE!"
+  questNum: 5
+  requiredItems:
+  - {fileID: 5676298554688586253, guid: 8a16c1866a9f7414c9d96e58961752bf, type: 3}
+  requiredAmount: 01000000
+  drainsHP: 0
+  rewardId: 
+  complete: 0

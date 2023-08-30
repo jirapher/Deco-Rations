@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3579c5bbd4198ec42ab7565722299c9e, type: 3}
+  m_Name: Q_Tower_1
+  m_EditorClassIdentifier: 
+  questName: The Night Attacks!
+  questDetails: Kezia thought you should know about the giant squirrel raids in the
+    night... In case you hadn't noticed. Build a Stone Tower and protect yourself!
+  questNum: 2
+  requiredItems:
+  - {fileID: 1676137644279503874, guid: df266ed19486d3b438513af1159dda35, type: 3}
+  requiredAmount: 01000000
+  drainsHP: 0
+  rewardId: 0f000000
+  complete: 1
