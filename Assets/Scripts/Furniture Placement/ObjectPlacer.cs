@@ -44,7 +44,7 @@ public class ObjectPlacer : MonoBehaviour
 
     internal void RemoveObjectAt(int gameobjectIndex)
     {
-        if(placedFurniture.Count <= gameobjectIndex || placedFurniture[gameobjectIndex] == null)
+        if(placedFurniture.Count < gameobjectIndex || placedFurniture[gameobjectIndex] == null)
         {
             print("snag in remove object at");
             return;
