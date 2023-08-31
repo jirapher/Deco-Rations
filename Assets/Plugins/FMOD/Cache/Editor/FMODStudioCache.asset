@@ -172,10 +172,10 @@ MonoBehaviour:
   Path: Assets/Audio/diidsg slowjam august 2023/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638289301365535133
+  lastModified: 638290256212878760
   FileSizes:
   - Name: Desktop
-    Value: 2332
+    Value: 2372
   Exists: 1
 --- !u!114 &-6380536024449841180
 MonoBehaviour:
@@ -257,6 +257,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-5322232272481303919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/night theme/win theme
+  m_EditorClassIdentifier: 
+  Name: win theme
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2937181034
+    data2: 207507908
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-4654265916686144854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +335,7 @@ MonoBehaviour:
   - {fileID: -5668394340774099157}
   - {fileID: 153312407541490673}
   - {fileID: -4654265916686144854}
+  - {fileID: -5322232272481303919}
   MinDistance: 0
   MaxDistance: 0
   Length: 32000
@@ -584,7 +609,7 @@ MonoBehaviour:
   - {fileID: 5533927802618822457}
   StringsBanks:
   - {fileID: -6599335020536364960}
-  cacheTime: 638289301480864197
+  cacheTime: 638290256212878760
   cacheVersion: 131605
 --- !u!114 &153312407541490673
 MonoBehaviour:
@@ -785,10 +810,10 @@ MonoBehaviour:
   Path: Assets/Audio/diidsg slowjam august 2023/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638289301480864197
+  lastModified: 638290256212878760
   FileSizes:
   - Name: Desktop
-    Value: 5586272
+    Value: 5837088
   Exists: 1
 --- !u!114 &6434849143316599129
 MonoBehaviour:

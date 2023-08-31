@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{de47b3f8-57d2-4285-a7e9-d36f28f4e2f2}">
+		<property name="name">
+			<value>win theme</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3687e533-cd84-45e0-9e91-b5b825748b94}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{0ac8bb2b-74f0-40fd-bbd1-ab587c9e0dcd}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{0ac8bb2b-74f0-40fd-bbd1-ab587c9e0dcd}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.85000008344650269</value>
+		</property>
+	</object>
+</objects>
