@@ -63,12 +63,13 @@ public class InputManager : MonoBehaviour
         {
             if(hit.collider.gameObject.TryGetComponent<Item>(out Item item))
             {
+                if (!item.canRotate) { return; }
                 item.Rotate();
                 AudioManager.instance.PlaySFX(13);
             }
             else
             {
-                print("No item script found");
+                print("No item found");
             }
             
         }

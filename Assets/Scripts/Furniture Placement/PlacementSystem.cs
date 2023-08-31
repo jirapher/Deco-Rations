@@ -26,7 +26,7 @@ public class PlacementSystem : MonoBehaviour
     private Vector3Int lastDetectedPosition = Vector3Int.zero;
 
     IBuildingState buildingState;
-
+    public LayerMask furnitureLayer;
     //private int activePieceID = -1;
 
     private void Start()
@@ -80,6 +80,28 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
     }
 
+    public bool TryRemoveObject()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, furnitureLayer);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.TryGetComponent<Item>(out Item item))
+            {
+                placer.RemoveObject(item);
+                return true;
+            }
+            else
+            {
+                print("No item found");
+                return false;
+            }
+
+        }
+
+        return false;
+    }
+
     /*private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         //Not sure about this -- P4 @ 13:30
@@ -91,7 +113,6 @@ public class PlacementSystem : MonoBehaviour
     public void StopPlacement()
     {
         if(buildingState == null) { return; }
-
         gridVisual.SetActive(false);
         buildingState.EndState();
         inputMan.OnClicked -= PlaceStructure;

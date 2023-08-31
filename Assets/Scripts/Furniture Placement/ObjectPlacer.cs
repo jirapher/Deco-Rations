@@ -46,15 +46,22 @@ public class ObjectPlacer : MonoBehaviour
     {
         if(placedFurniture.Count < gameobjectIndex || placedFurniture[gameobjectIndex] == null)
         {
-            print("snag in remove object at");
             return;
         }
 
-        AddToDatabase(placedFurniture[gameobjectIndex].GetComponent<Item>().itemID);
-        Destroy(placedFurniture[gameobjectIndex]);
-        placedFurniture.Remove(placedFurniture[gameobjectIndex]);
-        //placedFurniture[gameobjectIndex] = null;
+        GameObject g = placedFurniture[gameobjectIndex];
+        AddToDatabase(g.GetComponent<Item>().itemID);
+        Destroy(g);
 
+        placedFurniture.RemoveAll(x => x == null);
+
+    }
+
+    public void RemoveObject(Item item)
+    {
+        AddToDatabase(item.itemID);
+        Destroy(item.gameObject);
+        placedFurniture.RemoveAll(x => x == null);
     }
 
     public void SubtractFromDatabase(int itemID)

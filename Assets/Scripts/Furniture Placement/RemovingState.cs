@@ -45,6 +45,7 @@ public class RemovingState : IBuildingState
         {
             //sound - nothing to remove
             Debug.Log("sound here - selected data null");
+            return;
         }
         else
         {
@@ -54,7 +55,7 @@ public class RemovingState : IBuildingState
 
             selectedData.RemoveObjectAt(gridPosTemp);
 
-            placer.RemoveObjectAt(gameobjectIndex);
+            //placer.RemoveObjectAt(gameobjectIndex);
         }
 
         Vector2 cellPos = grid.CellToWorld(gridPosition);

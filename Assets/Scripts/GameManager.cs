@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public GameObject quitButton;
     public GameObject resetButton;
     public GameObject continueGameButton;
+    public GameObject endGameButton;
     //quest > gather > craft > build
     private void Start()
     {
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void DesignNotice()
     {
-        SetGameNotice("Click items in your inventory and start designing! Right click over placed furniture to rotate it. Storing puts things back in inventory. Click 'Finished' when you're uh, ya know, finished.", "The Design Screen");
+        SetGameNotice("Click items in your inventory and start designing! Right click over placed furniture to rotate it. Click 'Finished' when you're uh, ya know, finished.", "The Design Screen");
     }
 
     private void DeathNotice()
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
     private void WinGameNotice()
     {
         SetGameNotice("Malachi just spotted an incoming cruise ship! You have to make the tough decision. Would you like to be rescued? Or would you like to act like this was all intentional and open your own island resort?", "The Big Question");
-        quitButton.SetActive(true);
+        endGameButton.SetActive(true);
         continueGameButton.SetActive(true);
     }
 
@@ -92,11 +93,23 @@ public class GameManager : MonoBehaviour
         SetGameNotice("Click a character on the left and then click a destination to send them to. <br> Beach returns wood <br> River returns stones <br> Cave returns seeds <br> Woods return vines", "The Collection Screen");
     }
 
-    public void ContinueGameButton()
+    public void ContinueGameEnding()
     {
         continueGameButton.SetActive(false);
-        quitButton.SetActive(false);
+        endGameButton.SetActive(false);
+        introSlides.SetActive(true);
         CloseNotice();
+        StartCoroutine(introSlides.GetComponent<IntroSlides>().EndGameStay());
+    }
+
+    public void EndGameEnding()
+    {
+        continueGameButton.SetActive(false);
+        endGameButton.SetActive(false);
+        introSlides.SetActive(true);
+        CloseNotice();
+        StartCoroutine(introSlides.GetComponent<IntroSlides>().EndGameLeave());
+        //set slide + text
     }
 
     public void QuitButton()

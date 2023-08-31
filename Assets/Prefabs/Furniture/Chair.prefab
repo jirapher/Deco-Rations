@@ -106,6 +106,7 @@ MonoBehaviour:
   curDirection: 0
   canRotate: 1
   itemID: 1
+  instanceID: 0
 --- !u!61 &1966764580775367922
 BoxCollider2D:
   m_ObjectHideFlags: 0

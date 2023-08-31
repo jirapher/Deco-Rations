@@ -9,6 +9,8 @@ public class Item : MonoBehaviour
     public int curDirection = 0;
     public bool canRotate;
     public int itemID = -1;
+
+    public int instanceID = 0;
     //Directions 0:up, 1:right, 2:down, 3:left
     //all start up?
 
@@ -16,6 +18,13 @@ public class Item : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         curDirection = 1;
+        SetInstanceID();
+    }
+
+    public void SetInstanceID()
+    {
+        instanceID = Random.Range(1000, 9999);
+        print(instanceID + "ID");
     }
 
     public void Rotate()
@@ -33,8 +42,6 @@ public class Item : MonoBehaviour
 
     public void SetID(int id)
     {
-        if(id != itemID) { print("SOMETHING IS WRONG HERE!"); }
-
         itemID = id;
     }
 

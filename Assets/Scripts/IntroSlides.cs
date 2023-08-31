@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class IntroSlides : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class IntroSlides : MonoBehaviour
     public float pauseTime;
     public Animator slideAnim;
 
+
+    [Header("Ending Slides")]
+    public Sprite endStay, endLeave;
+    public TMP_Text thanksTxt;
     private void Start()
     {
         StartCoroutine(StartSlides());
@@ -68,6 +74,31 @@ public class IntroSlides : MonoBehaviour
             fader.color = newCol;
             yield return null;
         }
+    }
+
+    public IEnumerator EndGameStay()
+    {
+        fader.color = Color.white;
+        image.sprite = endStay;
+        thanksTxt.gameObject.SetActive(true);
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(FadeIn());
+        yield return new WaitForSeconds(1f);
+        thanksTxt.gameObject.SetActive(false);
+        GameManager.instance.IntroSlidesDone();
+    }
+
+    public IEnumerator EndGameLeave()
+    {
+        fader.color = Color.white;
+        image.sprite = endLeave;
+        thanksTxt.gameObject.SetActive(true);
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(FadeIn());
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0);
     }
 
 
