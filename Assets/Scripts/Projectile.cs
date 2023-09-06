@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if(target == null) { Destroy(gameObject); }
+        if(target == null) { Destroy(gameObject); return; }
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
     }
 

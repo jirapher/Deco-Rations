@@ -54,6 +54,15 @@ public class GameManager : MonoBehaviour
         IntroNotice();
     }
 
+    /*private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            curDay = 10;
+            OpenQuest();
+        }
+    }*/
+
     public void IntroSlidesDone()
     {
         introSlides.SetActive(false);
@@ -83,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     private void WinGameNotice()
     {
-        SetGameNotice("Malachi just spotted an incoming cruise ship! You have to make the tough decision. Would you like to be rescued? Or would you like to act like this was all intentional and open your own island resort?", "The Big Question");
+        SetGameNotice("Malachi just spotted an incoming cruise ship! You have to make the tough decision. You can choose to be rescued and end it now OR continue and turn your home into a vacation destination!", "The Big Question");
         endGameButton.SetActive(true);
         continueGameButton.SetActive(true);
     }
@@ -97,15 +106,22 @@ public class GameManager : MonoBehaviour
     {
         continueGameButton.SetActive(false);
         endGameButton.SetActive(false);
+        AllTabsOff();
         introSlides.SetActive(true);
         CloseNotice();
         StartCoroutine(introSlides.GetComponent<IntroSlides>().EndGameStay());
+    }
+
+    public void EndingQuestOpen()
+    {
+        questTab.SetActive(true);
     }
 
     public void EndGameEnding()
     {
         continueGameButton.SetActive(false);
         endGameButton.SetActive(false);
+        AllTabsOff();
         introSlides.SetActive(true);
         CloseNotice();
         StartCoroutine(introSlides.GetComponent<IntroSlides>().EndGameLeave());
@@ -242,6 +258,7 @@ public class GameManager : MonoBehaviour
         if(curDay == 10)
         {
             WinGameNotice();
+            //audioMan.WinEndMusic();
         }
 
         AllTabsOff();

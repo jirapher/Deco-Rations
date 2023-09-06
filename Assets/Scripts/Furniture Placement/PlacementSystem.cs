@@ -66,6 +66,7 @@ public class PlacementSystem : MonoBehaviour
         gridVisual.SetActive(true);
         buildingState = new RemovingState(grid, preview, floorData, furnitureData, placer);
         inputMan.OnClicked += PlaceStructure;
+        inputMan.OnClicked += TryRemoveObject;
         inputMan.OnExit += StopPlacement;
     }
 
@@ -80,9 +81,33 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
     }
 
-    public bool TryRemoveObject()
+    private void TryRemoveObject()
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, furnitureLayer);
+        //attempt #2
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
+        foreach(var hit in hits)
+        {
+            if (hit.collider.gameObject.TryGetComponent<Item>(out Item item))
+            {
+                if(item.itemID != 0)
+                {
+                    placer.RemoveObject(item);
+                    StopPlacement();
+                    return;
+                }
+
+            }
+            else
+            {
+                print("No item found");
+            }
+        }
+
+        StopPlacement();
+
+        //this was a bool
+        /*RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10, furnitureLayer);
 
         if (hit.collider != null)
         {
@@ -97,9 +122,7 @@ public class PlacementSystem : MonoBehaviour
                 return false;
             }
 
-        }
-
-        return false;
+        }*/
     }
 
     /*private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
@@ -116,6 +139,7 @@ public class PlacementSystem : MonoBehaviour
         gridVisual.SetActive(false);
         buildingState.EndState();
         inputMan.OnClicked -= PlaceStructure;
+        inputMan.OnClicked -= TryRemoveObject;
         inputMan.OnExit -= StopPlacement;
         lastDetectedPosition = Vector3Int.zero;
         buildingState = null;

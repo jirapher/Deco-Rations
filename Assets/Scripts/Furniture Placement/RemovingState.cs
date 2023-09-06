@@ -43,8 +43,6 @@ public class RemovingState : IBuildingState
 
         if(selectedData == null)
         {
-            //sound - nothing to remove
-            Debug.Log("sound here - selected data null");
             return;
         }
         else

@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
     public void SetInstanceID()
     {
         instanceID = Random.Range(1000, 9999);
-        print(instanceID + "ID");
+        //print(instanceID + "ID");
     }
 
     public void Rotate()

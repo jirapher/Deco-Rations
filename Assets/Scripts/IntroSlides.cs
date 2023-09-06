@@ -49,6 +49,7 @@ public class IntroSlides : MonoBehaviour
         AudioManager.instance.EnterDayTheme();
         StartCoroutine(FadeOut());
         yield return new WaitForSeconds(1f);
+        slideAnim.enabled = false;
         GameManager.instance.IntroSlidesDone();
     }
 
@@ -78,6 +79,7 @@ public class IntroSlides : MonoBehaviour
 
     public IEnumerator EndGameStay()
     {
+        image.gameObject.SetActive(true);
         fader.color = Color.white;
         image.sprite = endStay;
         thanksTxt.gameObject.SetActive(true);
@@ -87,10 +89,12 @@ public class IntroSlides : MonoBehaviour
         yield return new WaitForSeconds(1f);
         thanksTxt.gameObject.SetActive(false);
         GameManager.instance.IntroSlidesDone();
+        GameManager.instance.questTab.SetActive(true);
     }
 
     public IEnumerator EndGameLeave()
     {
+        image.gameObject.SetActive(true);
         fader.color = Color.white;
         image.sprite = endLeave;
         thanksTxt.gameObject.SetActive(true);

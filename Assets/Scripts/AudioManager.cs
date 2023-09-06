@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator DayToNightTransition()
     {
+        if(GameManager.instance.curDay == 10) { yield break; }
         StopLoopedSFX();
         bkg.setParameterByName("day intro transition", 0);
         bkg.setParameterByName("day stop and start", 0);
@@ -46,10 +47,17 @@ public class AudioManager : MonoBehaviour
 
     public void NightToDayTransition()
     {
+        if(GameManager.instance.curDay == 10) { return; }
         StopLoopedSFX();
         PlaySFX(2);
         bkg.setParameterByName("night stop start", 0);
         IntroMusic();
+    }
+
+    public void WinEndMusic()
+    {
+        //make sure it's still night theme?
+        bkg.setParameterByName("win theme", 1);
     }
 
     //craft : 1, gather : 4 both loops

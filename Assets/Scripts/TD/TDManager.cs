@@ -19,6 +19,7 @@ public class TDManager : MonoBehaviour
     public Transform[] seaSpawnPoints;
     public GameObject[] enemies;
     public GameObject squirrelBoss;
+    public GameObject batBoss;
 
     public Transform noFurnitureDestination;
     //0 = land, 1 = sea, 2 = air
@@ -61,7 +62,7 @@ public class TDManager : MonoBehaviour
     {
         placedFurniture.Clear();
         placedFurniture = new List<GameObject>(objectPlacer.GetAllPlacedFurniture());
-        
+        placedFurniture.RemoveAll(x => !x);
     }
 
     private void ActivateTowers()
@@ -246,19 +247,19 @@ public class TDManager : MonoBehaviour
         switch (dayNum)
         {
             case 1:
-                StartCoroutine(InvasionStart(6.5f, 0, dayNum));
+                StartCoroutine(InvasionStart(6f, 0, dayNum));
             break;
 
             case 2:
-                StartCoroutine(InvasionStart(4.8f, 0, dayNum));
+                StartCoroutine(InvasionStart(4.5f, 0, dayNum));
                 break;
 
             case 3:
-                StartCoroutine(InvasionStart(4.2f, 1, dayNum));
+                StartCoroutine(InvasionStart(4f, 1, dayNum));
                 break;
 
             case 4:
-                StartCoroutine(InvasionStart(4f, 1, dayNum));
+                StartCoroutine(InvasionStart(3.8f, 1, dayNum));
                 break;
 
             case 5:
@@ -281,6 +282,27 @@ public class TDManager : MonoBehaviour
             case 9:
                 StartCoroutine(InvasionStart(.5f, 2, dayNum));
                 break;
+
+            case 10:
+                StartCoroutine(InvasionStart(.25f, 2, dayNum));
+                ReleaseGiantBat();
+                break;
+
+            case 11:
+                StartCoroutine(InvasionStart(.15f, 2, dayNum));
+                break;
+
+            case 12:
+                StartCoroutine(InvasionStart(.1f, 2, dayNum));
+                break;
+
+            case 13:
+                StartCoroutine(InvasionStart(.05f, 2, dayNum));
+                break;
+
+            case 14:
+                StartCoroutine(InvasionStart(.01f, 2, dayNum));
+                break;
         }
     }
 
@@ -292,6 +314,20 @@ public class TDManager : MonoBehaviour
 
         g.transform.position = landSpawnPoints[Random.Range(0, landSpawnPoints.Length)].position;
         AudioManager.instance.PlaySFX(15);
+
+        e.canMove = true;
+        //needs to access list of currently placed furniture (placement system?) *not database..
+        allCurEnemies.Add(g);
+    }
+
+    private void ReleaseGiantBat()
+    {
+        GameObject g = Instantiate(batBoss, null);
+        EnemyMovement e = g.GetComponent<EnemyMovement>();
+        e.target = noFurnitureDestination;
+
+        g.transform.position = landSpawnPoints[Random.Range(0, landSpawnPoints.Length)].position;
+        //AudioManager.instance.PlaySFX(15);
 
         e.canMove = true;
         //needs to access list of currently placed furniture (placement system?) *not database..
